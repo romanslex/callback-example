@@ -7,10 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content={{csrf_token()}}>
     <title>Home</title>
+    <style>
+        *{margin:0;padding:0;}
+    </style>
 </head>
 <body>
 <div id="app">
-    <app></app>
 </div>
 
 <script src="{{ mix('js/app.js') }}"></script>
