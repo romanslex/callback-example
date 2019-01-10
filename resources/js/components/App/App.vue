@@ -1,17 +1,19 @@
 <template lang="pug">
     #app
         app-header
-        #menu
+        app-menu
         #content
         footer
 </template>
 
 <script>
     import AppHeader from "../AppHeader.vue"
+    import AppMenu from "../AppMenu.vue"
 
     export default {
         components: {
             AppHeader,
+            AppMenu,
         },
         mounted() {
             console.log('Component mounted.')
