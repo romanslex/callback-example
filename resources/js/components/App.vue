@@ -1,19 +1,21 @@
-<template>
-    <div id="app">
-        <header id="header">
-            <div id="header_logo_bar">
-                <h1 id="header_logo">LeadMe<span style="font-weight: 200">Back</span></h1>
-                <h2 id="header_tagline">Виджет обратного звонка</h2>
-            </div>
-            <div id="header_profile_bar">
-
-            </div>
-        </header>
-    </div>
+<template lang="pug">
+    #app
+        #header
+            #header_logo_bar
+                h1#header_logo
+                    | Callback
+                    span(style="font-weight:200")
+                        | Service
+            header-profile
 </template>
 
 <script>
+    import HeaderProfile from "./HeaderProfile.vue"
+
     export default {
+        components: {
+            HeaderProfile,
+        },
         mounted() {
             console.log('Component mounted.')
         }
@@ -24,6 +26,4 @@
     #app
         width: 1000px
         margin: 0 auto
-    h1
-        color: red
 </style>

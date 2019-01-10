@@ -25,6 +25,10 @@ module.exports = {
                     'stylus-loader'
                 ]
             },
+            {
+                test: /\.pug$/,
+                loader: 'pug-plain-loader'
+            },
         ]
     },
     plugins: [
