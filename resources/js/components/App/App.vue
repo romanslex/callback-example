@@ -2,7 +2,7 @@
     #app
         app-header
         app-menu
-        #content
+        router-view
         footer
 </template>
 

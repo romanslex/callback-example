@@ -2,11 +2,11 @@
     #menu-block
         #menu
             ul
-                li.item: a(href="/home/orders") Заявки
-                li.item: a(href="/home/widgets") Виджеты
-                li.item: a(href="/home/faq") F.A.Q.
-                li.item: a(href="/home/antispam") Антиспам
-                li.item: a(href="/home/feedback") Написать мне
+                router-link.item(tag="li" to="/home/orders" exact-active-class="active"): a Заявки
+                router-link.item(tag="li" to="/home/widgets" exact-active-class="active"): a Виджеты
+                router-link.item(tag="li" to="/home/faq" exact-active-class="active"): a F.A.Q.
+                router-link.item(tag="li" to="/home/antispam" exact-active-class="active"): a Антиспам
+                router-link.item(tag="li" to="/home/feedback" exact-active-class="active"): a Написать мне
 </template>
 
 <script>

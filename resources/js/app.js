@@ -20,6 +20,7 @@ require('./bootstrap');
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 import Vue from "Vue"
 import App from "./components/App/App.vue"
+import router from "./router"
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -28,6 +29,7 @@ import App from "./components/App/App.vue"
  */
 
 const app = new Vue({
+    router,
     components: {
         App
     },
