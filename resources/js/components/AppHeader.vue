@@ -5,15 +5,17 @@
                 | CallBack
                 span(style="font-weight:200")
                     | Service
-        header-profile
+            h2#header_tagline
+                | Виджет обратного звонка
+        profile-dropdown
 </template>
 
 <script>
-    import HeaderProfile from "./HeaderProfile.vue"
+    import ProfileDropdown from "./ProfileDropdown.vue"
 
     export default {
         components: {
-            HeaderProfile,
+            ProfileDropdown,
         }
     }
 </script>
@@ -22,4 +24,12 @@
     #header
         width: 940px
         margin: 0 auto
+        display: grid
+        grid-template-columns: 1fr 200px
+
+    #header_tagline
+        font-size: 14
+
+    #header_logo_bar
+        padding: 5px 0
 </style>

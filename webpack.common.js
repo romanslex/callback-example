@@ -29,6 +29,25 @@ module.exports = {
                 test: /\.pug$/,
                 loader: 'pug-plain-loader'
             },
+            {
+                test: /\.less$/,
+                use: [
+                    'vue-style-loader',
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'less-loader'
+                ]
+            },
+            {
+                test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+                use: [{
+                    loader: 'file-loader',
+                    options: {
+                        name: '[name].[ext]',
+                        outputPath: '/fonts/'
+                    }
+                }]
+            },
         ]
     },
     plugins: [
