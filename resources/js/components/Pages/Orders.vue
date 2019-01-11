@@ -21,11 +21,12 @@
             div(v-show="orders.length == 0 && !isLoaderDisplayed" style="font-size:13px; padding:5px 0")
                 | Пока нет ни одной заявки
             #loader-block(v-show="isLoaderDisplayed")
-                img#loader(src="")
+                img#loader(src="../../assets/loader.gif")
 </template>
 
 <script>
     import DatePicker from 'vue2-datepicker'
+    import moment from "moment"
 
     export default {
         components: {
@@ -41,21 +42,87 @@
                 custom: 5,
 
                 menu: [true, false, false, false, false],
+                currentMenuItem: 0,
                 customPeriod: "",
                 isLoaderDisplayed: false,
 
                 orders: [],
-                meta: [],
+                meta: {},
                 links: [],
             }
         },
         methods: {
+            toggleActiveBtn: function(active){
+                this.currentMenuItem = active;
+                this.menu = this.menu.map((item, index) => index === active);
+            },
             getData: function(val, page){
+                if(page > this.meta.last_page || page < 1) return;
 
+                this.toggleActiveBtn(val);
+                let date = this.getDate(val);
+                console.log(date);
+
+                this.isLoaderDisplayed = true;
+                this.orders = [];
+                this.isLoaderDisplayed = false;
+                window.axios
+                    .get("/home/orders/get-orders", {params: {
+                            s: date.s,
+                            e: date.e,
+                            page: page
+                        }})
+                    .then(response => {
+                        this.orders = response.data.data;
+                        this.meta = response.data.meta;
+                        this.links = response.data.links;
+                        this.isLoaderDisplayed = false;
+                    })
+                    .catch(error => {
+                        console.log(error);
+                        this.isLoaderDisplayed = false;
+                    })
+            },
+            getDate: function(val){
+                switch(val){
+                    case this.today:
+                        return {
+                            s: moment().format("DD.MM.YYYY"),
+                            e: moment().format("DD.MM.YYYY")
+                        };
+                    case this.yesterday:
+                        return {
+                            s: moment(new Date()).subtract(1, "days").format("DD.MM.YYYY"),
+                            e: moment(new Date()).subtract(1, "days").format("DD.MM.YYYY")
+                        };
+                    case this.week:
+                        return {
+                            s: moment(new Date()).subtract(7, "days").format("DD.MM.YYYY"),
+                            e: moment(new Date()).format("DD.MM.YYYY")
+                        };
+                    case this.month:
+                        return {
+                            s: moment(new Date()).subtract(1, "month").format("DD.MM.YYYY"),
+                            e: moment(new Date()).format("DD.MM.YYYY")
+                        };
+                    case this.threeMonth:
+                        return {
+                            s: moment(new Date()).subtract(3, "month").format("DD.MM.YYYY"),
+                            e: moment(new Date()).format("DD.MM.YYYY")
+                        };
+                    case this.custom:
+                        return {
+                            s: moment(this.customPeriod[0]).format("DD.MM.YYYY"),
+                            e: moment(this.customPeriod[1]).format("DD.MM.YYYY")
+                        };
+                }
             },
             onCustomPeriodChange: function(){
                 this.getData(this.custom, 1)
             }
+        },
+        created: function(){
+            this.getData(this.today, 1);
         }
     }
 </script>
@@ -124,4 +191,11 @@
         padding: 5px 0
     .td
         font-size: 13px
+
+    #loader-block
+        display: grid
+        justify-content: center
+        padding: 20px
+    #loader
+        width: 50px
 </style>

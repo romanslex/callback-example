@@ -15,4 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get("/home/orders/get-orders", "OrdersController@getOrders");
+
 Route::get('/home{any}', 'SpaController@index')->where('any', '.*');
