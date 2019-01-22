@@ -31,4 +31,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(BlackIp::class);
     }
+
+    public function blackPhones()
+    {
+        return $this->hasMany(BlackPhone::class);
+    }
 }
