@@ -21,7 +21,9 @@ require('./bootstrap');
 import Vue from "Vue"
 import App from "./components/App/App.vue"
 import router from "./router"
+import VueTruncateFilter from "vue-truncate-filter"
 
+Vue.use(VueTruncateFilter);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
