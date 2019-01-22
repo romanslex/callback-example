@@ -113,10 +113,10 @@
                 </div>
             @endif
             <div class="header">Введите email</div>
-            <input type="text" value="admin">
+            <input name="email" type="text" value="admin@callback.mail">
 
             <div class="header">Введите пароль</div>
-            <input type="password" style="margin-bottom: 5px;" value="admin">
+            <input name="password" type="password" style="margin-bottom: 5px;" value="secret">
 
             <button type="submit">Войти</button>
         </form>
