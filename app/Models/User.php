@@ -41,4 +41,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Payment::class);
     }
+
+    public function orders()
+    {
+        return $this->hasManyThrough(Order::class, Widget::class, "owner_id");
+    }
 }
