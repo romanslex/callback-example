@@ -40,6 +40,11 @@ class Widget extends Model
         return $this->belongsTo(User::class, "owner_id");
     }
 
+    public function regions()
+    {
+        return $this->hasMany(Region::class);
+    }
+
     public function getEmailsAttribute($value)
     {
         return json_decode($value, true);
