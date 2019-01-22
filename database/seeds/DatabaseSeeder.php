@@ -14,11 +14,16 @@ class DatabaseSeeder extends Seeder
         // $this->call(UsersTableSeeder::class);
         factory(\App\Models\User::class)
             ->create(["email" => "admin@callback.mail", "name" => "Admin"])
-            ->each(function($user){
+            ->each(function ($user) {
                 $user->widgets()->save(
                     factory(\App\Models\Widget::class)->make([
                         "url" => "example.com"
-                    ]));
+                    ]))
+                    ->each(function ($widget) {
+                        $widget->orders()->saveMany(
+                            factory(\App\Models\Order::class, 500)->make()
+                        );
+                    });
             });
     }
 }

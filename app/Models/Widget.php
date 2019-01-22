@@ -45,6 +45,11 @@ class Widget extends Model
         return $this->hasMany(Region::class);
     }
 
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
     public function getEmailsAttribute($value)
     {
         return json_decode($value, true);
