@@ -12,6 +12,13 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // $this->call(UsersTableSeeder::class);
-        factory(\App\Models\User::class)->create(["email" => "admin@callback.mail", "name" => "Admin"]);
+        factory(\App\Models\User::class)
+            ->create(["email" => "admin@callback.mail", "name" => "Admin"])
+            ->each(function($user){
+                $user->widgets()->save(
+                    factory(\App\Models\Widget::class)->make([
+                        "url" => "example.com"
+                    ]));
+            });
     }
 }
