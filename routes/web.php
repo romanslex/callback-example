@@ -1,7 +1,7 @@
 <?php
 
 
-Route::get("/home/orders/get-orders", "OrdersController@getOrders");
+Route::get("/data/orders/get-orders", "Data\OrdersController@getOrders");
 
 Route::get('/home{any}', 'SpaController@index')->where('any', '.*');
 

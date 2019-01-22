@@ -67,7 +67,7 @@
                 this.orders = [];
                 this.isLoaderDisplayed = false;
                 window.axios
-                    .get("/home/orders/get-orders", {params: {
+                    .get("/data/orders/get-orders", {params: {
                             s: date.s,
                             e: date.e,
                             page: page
