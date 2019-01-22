@@ -26,4 +26,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Widget::class, "owner_id");
     }
+
+    public function blackIps()
+    {
+        return $this->hasMany(BlackIp::class);
+    }
 }
