@@ -7,6 +7,7 @@ import Orders from "./components/Pages/Orders.vue"
 const router = new VueRouter({
     mode: "history",
     routes: [
+        { path: "/home", redirect: "/home/orders" },
         { path: '/home/orders', component: Orders },
     ]
 });
