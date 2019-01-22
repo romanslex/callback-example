@@ -22,6 +22,90 @@
                 | Пока нет ни одной заявки
             #loader-block(v-show="isLoaderDisplayed")
                 img#loader(src="../../assets/loader.gif")
+
+        .pagination(v-if="meta.last_page > 1")
+            .pagination-item(@click="getData(currnetMenuItem, meta.current_page - 1)")
+                i.fal.fa-angle-left
+
+            .pagination-middle-block(v-if="meta.last_page < 6" :style="{'grid-template-columns': 'repeat(' + meta.last_page + ', 35px)'}")
+                .pagination-item(
+                    v-for="page in meta.last_page"
+                    :key="page"
+                    :class="{'current': meta.current_page == page}"
+                    @click="getData(currentMenuItem, page)") {{page}}
+
+            .pagination-middle-block(v-if="meta.last_page >= 6 && meta.current_page <= 2" :style="{'grid-template-columns': 'repeat(5, 35px)'}")
+                .pagination-item(
+                    v-for="page in 3"
+                    :key="page"
+                    :class="{'current': meta.current_page == page}"
+                    @click="getData(currentMenuItem, page)"
+                ) {{page}}
+                .pagination-item.ellipsis ...
+                .pagination-item(
+                    @click="getData(currentMenuItem, meta.last_page)"
+                    :class="{'current': meta.current_page == meta.last_page}"
+                ) {{meta.last_page}}
+
+            .pagination-middle-block(
+                v-if="meta.last_page >= 6 && meta.current_page >= meta.last_page - 1"
+                :style="{'grid-template-columns': 'repeat(5, 35px)'}"
+            )
+                .pagination-item(
+                    @click="getData(currentMenuItem, 1)"
+                    :class="{'current': meta.current_page == 1}"
+                ) 1
+                .pagination-item.ellipsis ...
+                .pagination-item(
+                    v-for="page in 3"
+                    :key="page"
+                    :class="{'current': meta.current_page ==  meta.last_page - 3 + page}"
+                    @click="getData(currentMenuItem, meta.last_page - 3 + page)"
+                ) {{meta.last_page - 3 + page}}
+
+            .pagination-middle-block(v-if="meta.last_page >= 6 && meta.current_page == 3" :style="{'grid-template-columns': 'repeat(6, 35px)'}")
+                .pagination-item(
+                    v-for="page in 4"
+                    :key="page"
+                    :class="{'current': meta.current_page == page}"
+                    @click="getData(currentMenuItem, page)"
+                ) {{page}}
+                .pagination-item.ellipsis ...
+                .pagination-item(
+                     @click="getData(currentMenuItem, meta.last_page)"
+                    :class="{'current': meta.current_page == meta.last_page}"
+                ) {{meta.last_page}}
+
+            .pagination-middle-block(v-if="meta.last_page >= 6 && meta.current_page == meta.last_page - 2" :style="{'grid-template-columns': 'repeat(6, 35px)'}")
+                .pagination-item(@click="getData(currentMenuItem, 1)" :class="{'current': meta.current_page == 1}") 1
+                .pagination-item.ellipsis ...
+                .pagination-item(
+                    v-for="page in 4"
+                    :key="meta.last_page - 4 + page"
+                    :class="{'current': meta.current_page == meta.last_page - 4 + page}"
+                    @click="getData(currentMenuItem, meta.last_page - 4 + page)"
+                ) {{meta.last_page - 4 + page}}
+
+            .pagination-middle-block(
+                v-if="meta.last_page > 6 && meta.current_page > 3 && meta.current_page < meta.last_page - 2"
+                :style="{'grid-template-columns': 'repeat(7, 35px)'}"
+            )
+                .pagination-item( @click="getData(currentMenuItem, 1)" :class="{'current': meta.current_page == 1}") 1
+                .pagination-item.ellipsis ...
+                .pagination-item(
+                    v-for="page in [meta.current_page - 1, meta.current_page, meta.current_page + 1]"
+                    :key="page"
+                    :class="{'current': meta.current_page == page}"
+                    @click="getData(currentMenuItem, page)"
+                ) {{page}}
+                .pagination-item.ellipsis ...
+                .pagination-item(
+                    @click="getData(currentMenuItem, meta.last_page)"
+                    :class="{'current': meta.current_page == meta.last_page}"
+                ) {{meta.last_page}}
+
+            .pagination-item(@click="getData(currentMenuItem, meta.current_page + 1)")
+                i.fal.fa-angle-right
 </template>
 
 <script>
@@ -65,7 +149,7 @@
 
                 this.isLoaderDisplayed = true;
                 this.orders = [];
-                this.isLoaderDisplayed = false;
+
                 window.axios
                     .get("/data/orders/get-orders", {params: {
                             s: date.s,
@@ -198,4 +282,24 @@
         padding: 20px
     #loader
         width: 50px
+
+    .pagination
+        display: grid
+        grid-template-columns: 35px max-content 35px
+        grid-template-rows: 35px
+        justify-content: center
+    .pagination-middle-block
+        display: grid
+    .pagination-item
+        align-content: center
+        display: grid
+        font-size: 12px
+        cursor: pointer
+        text-align: center
+    .pagination-item.current
+        border: solid 1px #3497dc
+        border-radius: 50%
+        cursor: default
+    .pagination-item.ellipsis
+        cursor: default
 </style>
