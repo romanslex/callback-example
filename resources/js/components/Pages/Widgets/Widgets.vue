@@ -19,7 +19,7 @@
                     rates-modal(:wid="widget.id")
                     a.edit-btn-wrap(:href="'/home/widgets/' + widget.id + '/edit'")
                         button.edit-btn.btn
-                            i.fal.fa-cog.widget-edit
+                            i.fal.fa-cog.widget-edit(style="margin-right: 5px")
                             | Настроить
                     delete-site-confirm(:wid="widget.id" :url="widget.url")
         add-site-form
@@ -34,18 +34,31 @@
     import moment from "moment"
 
     export default {
+        data: function(){
+            return {
+                widgets: []
+            }
+        },
         components: {
             Sparkline,
             DeleteSiteConfirm,
             RatesModal,
             AddSiteForm,
         },
-        props: ["widgets"],
         methods: {
             formatDate(date){
                 return moment(date, "DD.MM.YYYY").format("DD MMMM YYYY")
             },
             getWidgets(){
+                window.axios
+                    .get("/data/widgets")
+                    .then(response => {
+                        this.widgets = response.data;
+                    })
+                    .catch(error => {
+                        console.log(error);
+                        this.isLoaderDisplayed = false;
+                    })
             }
         },
         created: function(){
@@ -60,6 +73,9 @@
         width: 940px
         margin: 0 auto
         padding-top: 20px
+        >>>.btn
+            text-transform: uppercase
+            outline: none
 
     #wt
         margin-top: 10px
@@ -90,4 +106,29 @@
         grid-template-areas: "buy . settings . del"
     .expired-td
         font-size: 14px
+
+    .widget-edit
+        color: white
+        cursor: pointer
+    .widget-delete
+        color: red
+        cursor: pointer
+        grid-area: del
+        align-self: center
+
+    .edit-btn-wrap
+        grid-area: settings
+    .edit-btn
+        border: none
+        color: white
+        padding: 5px 10px
+        background: #3497dc
+        cursor: pointer
+        font-size: 11px
+        &:hover
+            background: #115B8F
+            box-shadow: none
+    .expired-td.is-expired
+        font-size: 11px
+        color: red
 </style>

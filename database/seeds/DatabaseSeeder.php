@@ -15,8 +15,8 @@ class DatabaseSeeder extends Seeder
         factory(\App\Models\User::class)
             ->create(["email" => "admin@callback.mail", "name" => "Admin"])
             ->each(function ($user) {
-                $user->widgets()->save(
-                    factory(\App\Models\Widget::class)->make([
+                $user->widgets()->saveMany(
+                    factory(\App\Models\Widget::class, 2)->make([
                         "url" => "example.com"
                     ]))
                     ->each(function ($widget) {

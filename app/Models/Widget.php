@@ -7,6 +7,7 @@ use App\Structs\MobileBtnSettings;
 use App\Structs\MobileWindowSettings;
 use App\Structs\WindowSettings;
 use App\Traits\PhoneNumberFormatter;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Webpatser\Uuid\Uuid;
 
@@ -33,6 +34,11 @@ class Widget extends Model
         self::creating(function ($model) {
             $model->id = (string)Uuid::generate(4);
         });
+    }
+
+    public function isExpired()
+    {
+        return Carbon::now()->gte($this->rate_expired_at);
     }
 
     public function owner()
@@ -158,4 +164,23 @@ class Widget extends Model
         "weekdays_end" => "17:00",
         "weekdays_workdays" => true
     ];
+
+
+    public function lastOrders()
+    {
+        $lastOrders = \DB::select("
+        with recursive x as (
+         select cast(now() as date) as date
+         union all
+         select cast(x.date - interval '1 day' as date) from x
+         where cast(x.date - interval '1 day' as date) >= cast(now() - interval '15 day' as date)
+  )
+select x.date, coalesce(count(o.*), 0) as amount
+from x left join orders o on cast(o.created_at as date) = x.date
+where widget_id = ? or widget_id is null
+group by x.date
+order by x.date desc
+           ", [$this->id]);
+        return collect($lastOrders)->pluck("amount")->toArray();
+    }
 }

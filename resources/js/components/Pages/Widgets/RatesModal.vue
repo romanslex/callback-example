@@ -1,7 +1,7 @@
 <template lang="pug">
     div
         button.prolong-btn.btn(@click="show")
-            i.fas.fa-credit-card.widget-prolong
+            i.fas.fa-credit-card.widget-prolong(style="margin-right: 5px")
             | Продлить
         #rm-overlay(v-show="isModalVisible" @click="close")
         #rates-modal(v-show="isModalVisible")
@@ -37,7 +37,7 @@
                                 li Фирменное оформление
                                 li Интеграция с системами аналитики
                     .c-footer
-                        a.choose-btn.one-btn Выбрать
+                        a.choose-btn.two-btn Выбрать
 
                 .card.three
                     .c-body
@@ -52,7 +52,7 @@
                                 li Фирменное оформление
                                 li Интеграция с системами аналитики
                     .c-footer
-                        a.choose-btn.one-btn Выбрать
+                        a.choose-btn.three-btn Выбрать
 
                 .card.four
                     .c-body
@@ -67,7 +67,7 @@
                                 li Фирменное оформление
                                 li Интеграция с системами аналитики
                     .c-footer
-                        a.choose-btn.one-btn Выбрать
+                        a.choose-btn.four-btn Выбрать
 
                 .card.five
                     .c-body
@@ -82,7 +82,7 @@
                                 li Фирменное оформление
                                 li Интеграция с системами аналитики
                     .c-footer
-                        a.choose-btn.one-btn Выбрать
+                        a.choose-btn.five-btn Выбрать
 
 </template>
 
@@ -225,6 +225,34 @@
         box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33)
         &:hover
             background: #db8300
+            box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.38)
+
+    .two-btn
+        background: #622b6b
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33)
+        &:hover
+            background: #622b6b
+            box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.38)
+
+    .three-btn
+        background: #5089e0
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33)
+        &:hover
+            background: #5089e0
+            box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.38)
+
+    .four-btn
+        background: #ab353f
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33)
+        &:hover
+            background: #ab353f
+            box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.38)
+
+    .five-btn
+        background: #19671f
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33)
+        &:hover
+            background: #19671f
             box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.38)
 
     .fs-13
