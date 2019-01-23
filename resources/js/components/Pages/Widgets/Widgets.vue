@@ -61,10 +61,24 @@
                     })
             }
         },
+        computed: {
+            store: {
+                get(){
+                    return this.$store.state.widgetsPage;
+                }
+            }
+        },
         created: function(){
             moment.locale("ru");
-            this.getWidgets();
-        }
+            if(this.store.state != null)
+                Object.assign(this.$data, this.store.state);
+            else
+                this.getWidgets();
+        },
+        beforeRouteLeave  (to, from, next) {
+            this.$store.commit("widgetsPage/setState", this.$data);
+            next();
+        },
     }
 </script>
 

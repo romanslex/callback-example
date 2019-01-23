@@ -205,14 +205,21 @@
                 this.getData(this.custom, 1)
             }
         },
+        computed: {
+            store: {
+                get(){
+                    return this.$store.state.ordersPage;
+                }
+            }
+        },
         created: function(){
-            if(this.$store.state.ordersPage.state != null)
-                Object.assign(this.$data, this.$store.state.ordersPage.state);
+            if(this.store.state != null)
+                Object.assign(this.$data, this.store.state);
             else
                 this.getData(this.today, 1);
         },
         beforeRouteLeave  (to, from, next) {
-            this.$store.commit("setState", this.$data);
+            this.$store.commit("ordersPage/setState", this.$data);
             next();
         },
     }
