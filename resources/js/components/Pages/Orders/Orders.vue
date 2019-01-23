@@ -206,8 +206,15 @@
             }
         },
         created: function(){
-            this.getData(this.today, 1);
-        }
+            if(this.$store.state.ordersPage.state != null)
+                Object.assign(this.$data, this.$store.state.ordersPage.state);
+            else
+                this.getData(this.today, 1);
+        },
+        beforeRouteLeave  (to, from, next) {
+            this.$store.commit("setState", this.$data);
+            next();
+        },
     }
 </script>
 
