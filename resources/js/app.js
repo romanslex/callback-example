@@ -21,8 +21,11 @@ require('./bootstrap');
 import Vue from "Vue"
 import App from "./components/App/App.vue"
 import router from "./router"
-import VueTruncateFilter from "vue-truncate-filter"
 
+import Vuex from 'vuex';
+Vue.use(Vuex);
+
+import VueTruncateFilter from "vue-truncate-filter"
 Vue.use(VueTruncateFilter);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
