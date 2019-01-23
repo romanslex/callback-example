@@ -2,7 +2,7 @@ import Vue from "vue"
 import VueRouter from "vue-router"
 Vue.use(VueRouter);
 
-import Orders from "./components/Pages/Orders.vue"
+import Orders from "./components/Pages/Orders/Orders.vue"
 import Widgets from "./components/Pages/Widgets/Widgets.vue"
 import Faq from "./components/Pages/Faq.vue"
 import Antispam from "./components/Pages/Antispam/Antispam.vue";

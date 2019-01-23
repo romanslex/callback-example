@@ -2,14 +2,15 @@ import Vue from "vue"
 import Vuex from "vuex";
 Vue.use(Vuex)
 
+import OrdersPageStore from "./components/Pages/Orders/store"
+
 const store = new Vuex.Store({
+    modules: {
+        ordersPage: OrdersPageStore
+    },
     state: {
-        orders: []
     },
     mutations: {
-        increment (state) {
-            state.count++
-        }
     }
 });
 

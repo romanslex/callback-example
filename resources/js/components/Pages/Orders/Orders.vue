@@ -21,7 +21,7 @@
             div(v-show="orders.length == 0 && !isLoaderDisplayed" style="font-size:13px; padding:5px 0")
                 | Пока нет ни одной заявки
             #loader-block(v-show="isLoaderDisplayed")
-                img#loader(src="../../assets/loader.gif")
+                img#loader(src="../../../assets/loader.gif")
 
         .pagination(v-if="meta.last_page > 1")
             .pagination-item(@click="getData(currnetMenuItem, meta.current_page - 1)")
