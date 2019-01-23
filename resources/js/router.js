@@ -8,6 +8,7 @@ import Faq from "./components/Pages/Faq.vue"
 import Antispam from "./components/Pages/Antispam/Antispam.vue";
 import Feedback from "./components/Pages/Feedback.vue";
 import Balance from "./components/Pages/Balance.vue";
+import Settings from "./components/Pages/Settings.vue";
 
 const router = new VueRouter({
     mode: "history",
@@ -20,6 +21,7 @@ const router = new VueRouter({
         { path: '/home/feedback', component: Feedback },
 
         { path: '/home/balance', component: Balance },
+        { path: '/home/settings', component: Settings },
     ]
 });
 
