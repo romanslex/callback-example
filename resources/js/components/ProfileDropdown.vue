@@ -16,16 +16,16 @@
             i.fas.fa-caret-down
         #profile_dropdown(v-show="isWindowOpen")
             ul
-                li: a(href="/home/balance")
+                router-link(to="/home/balance" tag="li"): a
                     i.fas.fa-ruble-sign
                     | Пополнить баланс
-                li: a(href="/home/feedback")
+                router-link(to="/home/feedback" tag="li"): a
                     i.fas.fa-envelope
                     | Тех. поддержка
-                li: a(href="/home/settings")
+                router-link(to="/home/settings" tag="li"): a
                     i.fas.fa-cog
                     | Настройки
-                li: a(href="/logout")
+                router-link(to="/home/logout" tag="li"): a
                     i.fas.fa-power-off
                     | Выйти
 
