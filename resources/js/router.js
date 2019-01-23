@@ -9,6 +9,7 @@ import Antispam from "./components/Pages/Antispam/Antispam.vue";
 import Feedback from "./components/Pages/Feedback.vue";
 import Balance from "./components/Pages/Balance.vue";
 import Settings from "./components/Pages/Settings.vue";
+import WidgetEdit from "./components/Pages/WidgetEdit/Main.vue";
 
 const router = new VueRouter({
     mode: "history",
@@ -22,6 +23,8 @@ const router = new VueRouter({
 
         { path: '/home/balance', component: Balance },
         { path: '/home/settings', component: Settings },
+
+        { path: '/home/widgets/:id/edit', component: WidgetEdit },
     ]
 });
 

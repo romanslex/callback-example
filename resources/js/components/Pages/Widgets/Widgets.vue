@@ -17,7 +17,7 @@
                     .expired-td(v-else) {{formatDate(widget.rateExpiredAt)}}
                 .wt-td-actions
                     rates-modal(:wid="widget.id")
-                    a.edit-btn-wrap(:href="'/home/widgets/' + widget.id + '/edit'")
+                    router-link.edit-btn-wrap(:to="'/home/widgets/' + widget.id + '/edit'")
                         button.edit-btn.btn
                             i.fal.fa-cog.widget-edit(style="margin-right: 5px")
                             | Настроить
