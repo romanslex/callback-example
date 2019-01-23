@@ -18,15 +18,14 @@ require('./bootstrap');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-import Vue from "Vue"
+import Vue from "vue"
 import App from "./components/App/App.vue"
-import router from "./router"
-
-import Vuex from 'vuex';
-Vue.use(Vuex);
 
 import VueTruncateFilter from "vue-truncate-filter"
 Vue.use(VueTruncateFilter);
+
+import router from "./router"
+import store from "./store"
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -35,6 +34,7 @@ Vue.use(VueTruncateFilter);
 
 const app = new Vue({
     router,
+    store,
     components: {
         App
     },
