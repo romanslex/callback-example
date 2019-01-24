@@ -16,7 +16,7 @@
         .tab-content
             .tab-content-item(v-show="currentTab.general"): general
             .tab-content-item(v-show="currentTab.show"): show
-            <!--.tab-content-item(v-show="currentTab.integrations"): integrations-->
+            .tab-content-item(v-show="currentTab.integrations"): integrations
             <!--.tab-content-item(v-show="currentTab.code"): code-->
         div(style="display: grid; justify-content:end; margin-top: 20px")
             button.btn(@click="save") Сохранить настройки
@@ -26,7 +26,7 @@
     import General from "./General.vue"
     // import Code from "./Code.vue"
     import Show from "./Show.vue"
-    // import Integrations from "./Integrations.vue"
+    import Integrations from "./Integrations.vue"
     import moment from "moment"
     moment.locale("ru");
 
@@ -35,7 +35,7 @@
             General,
             // Code,
             Show,
-            // Integrations,
+            Integrations,
         },
         data: function(){
             return {
