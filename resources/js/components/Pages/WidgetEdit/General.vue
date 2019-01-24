@@ -200,15 +200,11 @@
             },
         },
         computed: {
-            widgetId: {
-                get(){
-                    return this.$route.params.id
-                }
+            widgetId(){
+                return this.$route.params.id
             },
-            widgetData: {
-                get(){
-                    return this.$store.getters['widgetEditPage/widgetData'](this.widgetId)
-                }
+            widgetData(){
+                return this.$store.getters['widgetEditPage/widgetData'](this.widgetId)
             },
             useEmailNotify: {
                 get: function(){
@@ -243,20 +239,14 @@
                     this.$store.dispatch("widgetEditPage/setWeekdaysSameSchedule", {widgetId: this.widgetId, value: newValue});
                 }
             },
-            workdays: {
-                get: function(){
-                    return this.widgetData.schedule.workdays;
-                }
+            workdays(){
+                return this.widgetData.schedule.workdays;
             },
-            timeStart: {
-                get: function(){
-                    return this.widgetData.schedule.time_start;
-                }
+            timeStart(){
+                return this.widgetData.schedule.time_start;
             },
-            timeEnd: {
-                get: function(){
-                    return this.widgetData.schedule.time_end;
-                }
+            timeEnd(){
+                return this.widgetData.schedule.time_end;
             },
             weekdaysWorkdays: {
                 get: function(){

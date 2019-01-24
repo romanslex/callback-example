@@ -30,25 +30,17 @@
             }
         },
         computed: {
-            widgetId: {
-                get(){
-                    return this.$route.params.id
-                }
+            widgetId(){
+                return this.$route.params.id
             },
-            widgetData: {
-                get(){
-                    return this.$store.getters['widgetEditPage/widgetData'](this.widgetId)
-                }
+            widgetData(){
+                return this.$store.getters['widgetEditPage/widgetData'](this.widgetId)
             },
-            phones: {
-                get(){
-                    return this.widgetData.phones;
-                }
+            phones(){
+                return this.widgetData.phones;
             },
-            isSmsNotifyEnabled: {
-                get(){
-                    return this.widgetData.is_sms_notify_enabled;
-                }
+            isSmsNotifyEnabled(){
+                return this.widgetData.is_sms_notify_enabled;
             }
         },
         created: function(){

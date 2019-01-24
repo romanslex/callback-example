@@ -49,6 +49,36 @@ const store = {
         setWeekdaysEnd(state, payload){
             state.settings[payload.widgetId].schedule.weekdays_end = payload.value;
         },
+
+        setIsDisplayedDuringNotWorkingHours(state, payload){
+            state.settings[payload.widgetId].is_displayed_during_not_working_hours = payload.value;
+        },
+        setIsCatchEnabled(state, payload){
+            state.settings[payload.widgetId].is_catch_enabled = payload.value;
+        },
+        setAutodisplayEnabled(state, payload){
+            state.settings[payload.widgetId].is_autodisplay_enabled = payload.value;
+        },
+        setAutodisplayDelay(state, payload){
+            state.settings[payload.widgetId].autodisplay_delay = payload.value;
+        },
+
+        setIsDisplayedInAllRegions(state, payload){
+            state.settings[payload.widgetId].is_displayed_in_all_regions = payload.value;
+        },
+
+        setRegions(state, payload){
+            state.settings[payload.widgetId].regions = payload.value;
+        },
+        addRegion(state, payload){
+            let regions = state.settings[payload.widgetId].regions;
+            regions.push(payload.value);
+            state.settings[payload.widgetId].regions = regions;
+        },
+        removeRegion(state, payload){
+            let regions = state.settings[payload.widgetId].regions;
+            regions.splice(_.findIndex(regions, i => i.uid === payload.value.uid), 1)
+        },
     },
     actions: {
         initWidgetData({commit, state}, widgetId){
@@ -97,6 +127,33 @@ const store = {
         },
         setWeekdaysEnd({commit}, payload){
             commit("setWeekdaysEnd", payload)
+        },
+
+        setIsDisplayedDuringNotWorkingHours({commit}, payload){
+            commit("setIsDisplayedDuringNotWorkingHours", payload)
+        },
+        setIsCatchEnabled({commit}, payload){
+            commit("setIsCatchEnabled", payload)
+        },
+        setAutodisplayEnabled({commit}, payload){
+            commit("setAutodisplayEnabled", payload)
+        },
+        setAutodisplayDelay({commit}, payload){
+            commit("setAutodisplayDelay", payload)
+        },
+
+        setIsDisplayedInAllRegions({commit}, payload){
+            commit("setIsDisplayedInAllRegions", payload)
+        },
+
+        setRegions({commit}, payload){
+            commit("setRegions", payload)
+        },
+        addRegion({commit}, payload){
+            commit("addRegion", payload)
+        },
+        removeRegion({commit}, payload){
+            commit("removeRegion", payload)
         },
     },
     getters: {

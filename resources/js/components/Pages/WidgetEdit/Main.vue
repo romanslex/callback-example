@@ -15,7 +15,7 @@
                 a Код виджета
         .tab-content
             .tab-content-item(v-show="currentTab.general"): general
-            <!--.tab-content-item(v-show="currentTab.show"): show-->
+            .tab-content-item(v-show="currentTab.show"): show
             <!--.tab-content-item(v-show="currentTab.integrations"): integrations-->
             <!--.tab-content-item(v-show="currentTab.code"): code-->
         div(style="display: grid; justify-content:end; margin-top: 20px")
@@ -25,7 +25,7 @@
 <script>
     import General from "./General.vue"
     // import Code from "./Code.vue"
-    // import Show from "./Show.vue"
+    import Show from "./Show.vue"
     // import Integrations from "./Integrations.vue"
     import moment from "moment"
     moment.locale("ru");
@@ -34,7 +34,7 @@
         components: {
             General,
             // Code,
-            // Show,
+            Show,
             // Integrations,
         },
         data: function(){
@@ -63,20 +63,14 @@
             },
         },
         computed: {
-            isInitStateReady: {
-                get(){
-                    return this.$store.getters["widgetEditPage/isInitStateReady"](this.widgetId)
-                }
+            isInitStateReady(){
+                return this.$store.getters["widgetEditPage/isInitStateReady"](this.widgetId)
             },
-            widgetId: {
-                get(){
-                    return this.$route.params.id;
-                }
+            widgetId(){
+                return this.$route.params.id;
             },
-            widgetData: {
-                get(){
-                    return this.$store.getters['widgetEditPage/widgetData'](this.widgetId)
-                }
+            widgetData(){
+                return this.$store.getters['widgetEditPage/widgetData'](this.widgetId)
             },
             url(){
                 return this.widgetData.url

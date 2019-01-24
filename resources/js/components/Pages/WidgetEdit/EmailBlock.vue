@@ -26,25 +26,17 @@
             }
         },
         computed: {
-            widgetId: {
-                get(){
-                    return this.$route.params.id;
-                }
+            widgetId(){
+                return this.$route.params.id;
             },
-            widgetData: {
-                get(){
-                    return this.$store.getters['widgetEditPage/widgetData'](this.widgetId)
-                }
+            widgetData(){
+                return this.$store.getters['widgetEditPage/widgetData'](this.widgetId)
             },
-            emails: {
-                get(){
-                    return this.widgetData.emails;
-                }
+            emails(){
+                return this.widgetData.emails;
             },
-            isEmailNotifyEnabled: {
-                get(){
-                    return this.widgetData.is_email_notify_enabled;
-                }
+            isEmailNotifyEnabled(){
+                return this.widgetData.is_email_notify_enabled;
             }
         },
         created: function(){
