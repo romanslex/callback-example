@@ -20,7 +20,7 @@
         h3.h3 Выберите ваш часовой пояс
         #timezones-block
             select(v-model="currentTimezone")
-                option(v-for="timezone in timezones" v-bind:value="timezone.value" v-bind:key="timezone.value")
+                option(v-for="timezone in timezones" :value="timezone.value" :key="timezone.value") {{timezone.text}}
         div(style="display:grid; grid-template-columns: repeat(2, max-content); grid-gap: 5px; margin-top: 20px; margin-bottom: 5px;")
             h3 График работы
             helper(:width="400")
@@ -44,74 +44,74 @@
                 .sb-row-day
                     rml-checkbox(text="Будни" v-model="weekdaysWorkdays")
                 .sb-row-from с
-                    select(:disabled="!weekdaysWorkdays" v-model="weekdaysStart")
+                    select(:disabled="!weekdaysWorkdays" v-model="weekdaysStart" style="margin-left: 5px")
                         option(v-for="time in times" :key="time") {{time}}
                 .sb-row-to до
-                    select(:disabled="!weekdaysWorkdays" v-model="weekdaysEnd")
+                    select(:disabled="!weekdaysWorkdays" v-model="weekdaysEnd" style="margin-left: 5px;")
                         option(v-for="time in times" :key="time") {{time}}
             #sb-wds(v-show="!isWeekdaysSameSchedule")
                 .sb-row
                     .sb-row-day
                         rml-checkbox(text="Понедельник" v-model="workdays[0]")
                     .sb-row-from с
-                        select(:disabled="!workdays[0]" v-model="timeStart[0]")
+                        select(:disabled="!workdays[0]" v-model="timeStart[0]" style="margin-left: 5px")
                             option(v-for="time in times" :key="time") {{time}}
                     .sb-row-to до
-                        select(:disabled="!workdays[0]" v-model="timeEnd[0]")
+                        select(:disabled="!workdays[0]" v-model="timeEnd[0]" style="margin-left: 5px")
                             option(v-for="time in times" :key="time") {{time}}
                 .sb-row
                     .sb-row-day
                         rml-checkbox(text="Вторник" v-model="workdays[1]")
                     .sb-row-from с
-                        select(:disabled="!workdays[1]" v-model="timeStart[1]")
+                        select(:disabled="!workdays[1]" v-model="timeStart[1]" style="margin-left: 5px")
                             option(v-for="time in times" :key="time") {{time}}
                     .sb-row-to до
-                        select(:disabled="!workdays[1]" v-model="timeEnd[1]")
+                        select(:disabled="!workdays[1]" v-model="timeEnd[1]" style="margin-left: 5px")
                             option(v-for="time in times" :key="time") {{time}}
                 .sb-row
                     .sb-row-day
                         rml-checkbox(text="Среда" v-model="workdays[2]")
                     .sb-row-from с
-                        select(:disabled="!workdays[2]" v-model="timeStart[2]")
+                        select(:disabled="!workdays[2]" v-model="timeStart[2]" style="margin-left: 5px")
                             option(v-for="time in times" :key="time") {{time}}
                     .sb-row-to до
-                        select(:disabled="!workdays[2]" v-model="timeEnd[2]")
+                        select(:disabled="!workdays[2]" v-model="timeEnd[2]" style="margin-left: 5px")
                             option(v-for="time in times" :key="time") {{time}}
                 .sb-row
                     .sb-row-day
                         rml-checkbox(text="Четверг" v-model="workdays[3]")
                     .sb-row-from с
-                        select(:disabled="!workdays[3]" v-model="timeStart[3]")
+                        select(:disabled="!workdays[3]" v-model="timeStart[3]" style="margin-left: 5px")
                             option(v-for="time in times" :key="time") {{time}}
                     .sb-row-to до
-                        select(:disabled="!workdays[3]" v-model="timeEnd[3]")
+                        select(:disabled="!workdays[3]" v-model="timeEnd[3]" style="margin-left: 5px")
                             option(v-for="time in times" :key="time") {{time}}
                 .sb-row
                     .sb-row-day
                         rml-checkbox(text="Пятница" v-model="workdays[4]")
                     .sb-row-from с
-                        select(:disabled="!workdays[4]" v-model="timeStart[4]")
+                        select(:disabled="!workdays[4]" v-model="timeStart[4]" style="margin-left: 5px")
                             option(v-for="time in times" :key="time") {{time}}
                     .sb-row-to до
-                        select(:disabled="!workdays[4]" v-model="timeEnd[4]")
+                        select(:disabled="!workdays[4]" v-model="timeEnd[4]" style="margin-left: 5px")
                             option(v-for="time in times" :key="time") {{time}}
                 .sb-row
                     .sb-row-day
                         rml-checkbox(text="Суббота" v-model="workdays[5]")
                     .sb-row-from с
-                        select(:disabled="!workdays[5]" v-model="timeStart[5]")
+                        select(:disabled="!workdays[5]" v-model="timeStart[5]" style="margin-left: 5px")
                             option(v-for="time in times" :key="time") {{time}}
                     .sb-row-to до
-                        select(:disabled="!workdays[5]" v-model="timeEnd[5]")
+                        select(:disabled="!workdays[5]" v-model="timeEnd[5]" style="margin-left: 5px")
                             option(v-for="time in times" :key="time") {{time}}
                 .sb-row
                     .sb-row-day
                         rml-checkbox(text="Воскресение" v-model="workdays[6]")
                     .sb-row-from с
-                        select(:disabled="!workdays[6]" v-model="timeStart[6]")
+                        select(:disabled="!workdays[6]" v-model="timeStart[6]" style="margin-left: 5px")
                             option(v-for="time in times" :key="time") {{time}}
                     .sb-row-to до
-                        select(:disabled="!workdays[6]" v-model="timeEnd[6]")
+                        select(:disabled="!workdays[6]" v-model="timeEnd[6]" style="margin-left: 5px")
                             option(v-for="time in times" :key="time") {{time}}
 </template>
 <script>
@@ -215,7 +215,7 @@
                     return this.widgetData.is_email_notify_enabled;
                 },
                 set: function(newValue){
-                    this.$store.dispatch("toggleEmailNotify", newValue)
+                    this.$store.dispatch("widgetEditPage/toggleEmailNotify", {widgetId: this.widgetId, value: newValue})
                 }
             },
             useSmsNotify: {
@@ -223,7 +223,7 @@
                     return this.widgetData.is_sms_notify_enabled;
                 },
                 set: function(newValue){
-                    this.$store.dispatch("toggleSmsNotify", newValue);
+                    this.$store.dispatch("widgetEditPage/toggleSmsNotify", {widgetId: this.widgetId, value: newValue})
                 }
             },
             currentTimezone: {
@@ -231,7 +231,7 @@
                     return this.widgetData.timezone;
                 },
                 set: function(newValue){
-                    this.$store.dispatch("setTimezone", newValue);
+                    this.$store.dispatch("widgetEditPage/setTimezone", {widgetId: this.widgetId, value: newValue});
                 }
             },
 
@@ -240,7 +240,7 @@
                     return this.widgetData.schedule.is_weekdays_same_schedule;
                 },
                 set: function(newValue){
-                    this.$store.dispatch("setWeekdaysSameSchedule", newValue);
+                    this.$store.dispatch("widgetEditPage/setWeekdaysSameSchedule", {widgetId: this.widgetId, value: newValue});
                 }
             },
             workdays: {
@@ -263,7 +263,7 @@
                     return this.widgetData.schedule.weekdays_workdays;
                 },
                 set: function(newValue){
-                    this.$store.dispatch("setWeekdaysWorkdays", newValue);
+                    this.$store.dispatch("widgetEditPage/setWeekdaysWorkdays", {widgetId: this.widgetId, value: newValue});
                 }
             },
             weekdaysStart: {
@@ -271,7 +271,7 @@
                     return this.widgetData.schedule.weekdays_start;
                 },
                 set: function(newValue){
-                    this.$store.dispatch("setWeekdaysStart", newValue);
+                    this.$store.dispatch("widgetEditPage/setWeekdaysStart", {widgetId: this.widgetId, value: newValue});
                 }
             },
             weekdaysEnd: {
@@ -279,7 +279,7 @@
                     return this.widgetData.schedule.weekdays_end;
                 },
                 set: function(newValue){
-                    this.$store.dispatch("setWeekdaysEnd", newValue);
+                    this.$store.dispatch("widgetEditPage/setWeekdaysEnd", {widgetId: this.widgetId, value: newValue});
                 }
             },
         }
@@ -313,4 +313,9 @@
         display: grid
         grid-template-columns: 280px max-content
         grid-gap: 30px
+
+    select
+        font-size: 14px
+        padding: 5px
+        outline: none
 </style>

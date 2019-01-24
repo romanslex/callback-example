@@ -1,6 +1,6 @@
 <template lang="pug">
     div
-        .add-email(v-for="(email, index) in emails" :key="email.value")
+        .add-email(v-for="(email, index) in emails" :key="index")
             input.email(v-model="email.value" type="text" placeholder="email@example.com" :disabled="!isEmailNotifyEnabled")
             i.far.fa-times-circle.del-email(@click="remove(index)" :class="{'disabled': !isEmailNotifyEnabled}" v-if="index != 0")
             .fake-del-email(v-if="index == 0")
@@ -18,11 +18,11 @@
         methods: {
             addEmail: function(){
                 if(!this.isEmailNotifyEnabled) return;
-                this.$store.dispatch("addEmail");
+                this.$store.dispatch("widgetEditPage/addEmail", this.widgetId);
             },
             remove: function(index){
                 if(!this.isEmailNotifyEnabled) return;
-                this.$store.dispatch("removeEmail", index);
+                this.$store.dispatch("widgetEditPage/removeEmail", {widgetId: this.widgetId, value: index});
             }
         },
         computed: {
@@ -49,7 +49,7 @@
         },
         created: function(){
             if(this.emails.length === 0)
-                this.$store.dispatch("addEmail");
+                this.$store.dispatch("addEmail", this.widgetId);
         }
     }
 </script>
