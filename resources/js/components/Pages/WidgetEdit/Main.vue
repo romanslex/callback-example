@@ -14,7 +14,7 @@
             .tab-nav-item(v-bind:class="{active: currentTab.code}" @click="setCurrentTab('code')")
                 a Код виджета
         .tab-content
-            <!--.tab-content-item(v-show="currentTab.general"): general-->
+            .tab-content-item(v-show="currentTab.general"): general
             <!--.tab-content-item(v-show="currentTab.show"): show-->
             <!--.tab-content-item(v-show="currentTab.integrations"): integrations-->
             <!--.tab-content-item(v-show="currentTab.code"): code-->
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-    // import General from "./General.vue"
+    import General from "./General.vue"
     // import Code from "./Code.vue"
     // import Show from "./Show.vue"
     // import Integrations from "./Integrations.vue"
@@ -32,7 +32,7 @@
 
     export default {
         components: {
-            // General,
+            General,
             // Code,
             // Show,
             // Integrations,
@@ -63,14 +63,20 @@
             },
         },
         computed: {
-            isInitStateReady(){
-                return this.$store.getters["widgetEditPage/isInitStateReady"](this.widgetId)
+            isInitStateReady: {
+                get(){
+                    return this.$store.getters["widgetEditPage/isInitStateReady"](this.widgetId)
+                }
             },
-            widgetId(){
-                return this.$route.params.id;
+            widgetId: {
+                get(){
+                    return this.$route.params.id;
+                }
             },
-            widgetData(){
-                return this.$store.getters['widgetEditPage/widgetData'](this.widgetId)
+            widgetData: {
+                get(){
+                    return this.$store.getters['widgetEditPage/widgetData'](this.widgetId)
+                }
             },
             url(){
                 return this.widgetData.url
