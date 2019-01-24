@@ -3,6 +3,7 @@
 
 Route::get("/data/orders/get-orders", "Data\OrdersController@getOrders");
 Route::get("/data/widgets", "Data\WidgetsController@getWidgets");
+Route::get("/data/widgets/{id}", "Data\WidgetsController@getWidgetById");
 
 Route::get('/home{any}', 'SpaController@index')->where('any', '.*');
 

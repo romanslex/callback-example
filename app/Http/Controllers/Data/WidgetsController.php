@@ -9,7 +9,7 @@ class WidgetsController extends Controller
 {
     public function getWidgets()
     {
-        return auth()->user()->widgets->map(function($widget){
+        return auth()->user()->widgets->map(function ($widget) {
             return [
                 "id" => $widget->id,
                 "url" => $widget->url,
@@ -18,5 +18,14 @@ class WidgetsController extends Controller
                 "isExpired" => $widget->isExpired(),
             ];
         });
+    }
+
+    public function getWidgetById($id)
+    {
+        return auth()
+            ->user()
+            ->widgets()
+            ->with("regions")
+            ->findOrFail($id);
     }
 }

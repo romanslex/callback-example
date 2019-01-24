@@ -1,5 +1,5 @@
 <template lang="pug">
-    #edit-widget-content
+    #edit-widget-content(v-if="isInitStateReady")
         h3  {{url | truncate(60)}}
         .tab-nav
             .wi
@@ -14,10 +14,10 @@
             .tab-nav-item(v-bind:class="{active: currentTab.code}" @click="setCurrentTab('code')")
                 a Код виджета
         .tab-content
-            .tab-content-item(v-show="currentTab.general"): general
-            .tab-content-item(v-show="currentTab.show"): show
-            .tab-content-item(v-show="currentTab.integrations"): integrations
-            .tab-content-item(v-show="currentTab.code"): code
+            <!--.tab-content-item(v-show="currentTab.general"): general-->
+            <!--.tab-content-item(v-show="currentTab.show"): show-->
+            <!--.tab-content-item(v-show="currentTab.integrations"): integrations-->
+            <!--.tab-content-item(v-show="currentTab.code"): code-->
         div(style="display: grid; justify-content:end; margin-top: 20px")
             button.btn(@click="save") Сохранить настройки
 </template>
@@ -63,15 +63,29 @@
             },
         },
         computed: {
+            isInitStateReady(){
+                return this.$store.getters["widgetEditPage/isInitStateReady"](this.widgetId)
+            },
+            widgetId(){
+                return this.$route.params.id;
+            },
+            widgetData(){
+                return this.$store.getters['widgetEditPage/widgetData'](this.widgetId)
+            },
             url(){
-                return this.$store.state.settings.url;
+                return this.widgetData.url
             },
             rateExpiredAt(){
-                return moment(this.$store.state.settings.rate_expired_at).format("D MMM YYYY");
+                return moment(
+                    this.widgetData.rate_expired_at
+                ).format("D MMM YYYY");
             },
             isRateExpired(){
-                return (new Date()).getTime() >= (new Date(this.$store.state.settings.rate_expired_at)).getTime();
+                return (new Date()).getTime() >= (new Date(this.widgetData.rate_expired_at)).getTime();
             }
+        },
+        created: function(){
+            this.$store.dispatch("widgetEditPage/initWidgetData", this.widgetId);
         }
     }
 </script>
