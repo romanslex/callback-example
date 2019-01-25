@@ -4,6 +4,7 @@
 Route::get("/data/orders/get-orders", "Data\OrdersController@getOrders");
 Route::get("/data/widgets", "Data\WidgetsController@getWidgets");
 Route::get("/data/widgets/{id}", "Data\WidgetsController@getWidgetById");
+Route::put("/data/widgets/{id}", "Data\WidgetsController@update");
 
 Route::get('/home{any}', 'SpaController@index')->where('any', '.*');
 

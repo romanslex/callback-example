@@ -57,7 +57,7 @@
             },
             save: function(){
                 window.axios
-                    .put("/home/widgets/" + this.widgetId, this.widgetData)
+                    .put("/data/widgets/" + this.widgetId, this.widgetData)
                     .then(response => this.$notifySuccess())
                     .catch(error => this.$notifyDanger());
             },

@@ -29,7 +29,7 @@
                 :class="{'disabled': isDisplayedInAllRegions}"
                 @click="remove(region)"
             )
-                .rbi-city {{region.id}} {{region.name}}
+                .rbi-city {{region.name}}
                 .rbi-city
                     i.fal.fa-times-circle
 </template>
