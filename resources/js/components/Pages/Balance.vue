@@ -71,7 +71,7 @@
                 this.isLoaderDisplayed = true;
                 this.resultPayments = [];
                 axios
-                    .get("/data/balance/get-payments", {params: date})
+                    .get("/data/payments", {params: date})
                     .then(response => {
                         this.resultPayments = this.transformPayments(response.data);
                         this.isLoaderDisplayed = false;

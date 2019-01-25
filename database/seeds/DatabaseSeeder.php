@@ -22,6 +22,9 @@ class DatabaseSeeder extends Seeder
                             factory(\App\Models\Order::class, 500)->make()
                         );
                     });
+                $user->payments()->saveMany(
+                    factory(\App\Models\Payment::class, 500)->make()
+                );
             });
     }
 }

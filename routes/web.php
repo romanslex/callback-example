@@ -8,6 +8,8 @@ Route::put("/data/widgets/{id}", "Data\WidgetsController@update");
 Route::post("/data/widgets", "Data\WidgetsController@store");
 Route::delete("/data/widgets/{id}", "Data\WidgetsController@destroy");
 
+Route::get("/data/payments", "Data\PaymentsController@index");
+
 Route::get('/home{any}', 'SpaController@index')->where('any', '.*');
 
 Auth::routes();
