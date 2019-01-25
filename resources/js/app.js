@@ -27,6 +27,9 @@ Vue.use(VueTruncateFilter);
 import NotifyPlugin from "./components/Shared/NotifyPlugin/NotifyPlugin";
 Vue.use(NotifyPlugin);
 
+import VueClipboard from "vue-clipboard2"
+Vue.use(VueClipboard);
+
 import router from "./router"
 import store from "./store"
 /**
