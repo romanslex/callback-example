@@ -1,6 +1,8 @@
 <template lang="pug">
     #widgets-content
-        #wt
+        #loader-block(v-show="isLoaderDisplayed")
+            img#loader(src="../../../assets/loader.gif")
+        #wt(v-show="!isLoaderDisplayed")
             .wt-tr
                 .wt-td-url Сайт
                 .wt-td-orders Заявки
@@ -22,7 +24,7 @@
                             i.fal.fa-cog.widget-edit(style="margin-right: 5px")
                             | Настроить
                     delete-site-confirm(:wid="widget.id" :url="widget.url" @widget-deleted="onWidgetDeleted")
-        add-site-form(@widget-added="addWidget")
+        add-site-form(@widget-added="addWidget" v-show="!isLoaderDisplayed")
 </template>
 
 <script>
@@ -50,9 +52,11 @@
                 return moment(date, "DD.MM.YYYY").format("DD MMMM YYYY")
             },
             getWidgets(){
+                this.isLoaderDisplayed = true;
                 window.axios
                     .get("/data/widgets")
                     .then(response => {
+                        this.isLoaderDisplayed = false;
                         this.widgets = response.data;
                     })
                     .catch(error => {
@@ -152,4 +156,11 @@
     .expired-td.is-expired
         font-size: 11px
         color: red
+
+    #loader-block
+        display: grid
+        justify-content: center
+        padding: 20px
+    #loader
+        width: 50px
 </style>
