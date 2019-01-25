@@ -69,9 +69,11 @@
         cursor: pointer
         text-transform: uppercase
         outline: none
-        transition: box-shadow 0.15s ease-out
+        transition: box-shadow 0.15s ease-out, background-color .1s ease-out
         &:hover
             box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.38)
+        &:active
+            background: darken(#3497dc, 15%)
 
     #msg
         font-size: 14px
@@ -80,4 +82,7 @@
         width: 100%
         height: 150px
         resize: none
+
+    textarea
+        outline: none
 </style>

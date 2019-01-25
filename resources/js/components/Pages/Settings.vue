@@ -162,10 +162,12 @@
         cursor: pointer
         text-transform: uppercase
         outline: none
-        transition: box-shadow 0.15s ease-out
+        transition: box-shadow 0.15s ease-out, background-color .1s ease-out
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33)
         &:hover
-            background: darken(#49af60, 15%)
             box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.38)
+        &:active
+            background: darken(#49af60, 15%)
 
     .error-block
         padding-top: 5px

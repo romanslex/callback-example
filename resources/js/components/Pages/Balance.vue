@@ -152,10 +152,11 @@
         cursor: pointer
         text-transform: uppercase
         outline: none
-        transition: box-shadow 0.15s ease-out
+        transition: box-shadow 0.15s ease-out, background-color .1s ease-out
         &:hover
-            background: #115d8e
             box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.38)
+        &:active
+            background: darken(#3497dc, 15%)
     input
         height: 30px
         padding-left: 5px
