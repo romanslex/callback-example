@@ -1,25 +1,28 @@
 <template lang="pug">
-    #edit-widget-content(v-if="isInitStateReady")
-        h3  {{url | truncate(60)}}
-        .tab-nav
-            .wi
-                div(v-if="!isRateExpired") Тариф истекает - {{rateExpiredAt}}
-                .expired(v-if="isRateExpired") Тариф истек - {{rateExpiredAt}}
-            .tab-nav-item(v-bind:class="{active: currentTab.general}" @click="setCurrentTab('general')")
-                a Основные
-            .tab-nav-item(v-bind:class="{active: currentTab.show}" @click="setCurrentTab('show')")
-                a Настройки показа
-            .tab-nav-item(v-bind:class="{active: currentTab.integrations}" @click="setCurrentTab('integrations')")
-                a Интеграции
-            .tab-nav-item(v-bind:class="{active: currentTab.code}" @click="setCurrentTab('code')")
-                a Код виджета
-        .tab-content
-            .tab-content-item(v-show="currentTab.general"): general
-            .tab-content-item(v-show="currentTab.show"): show
-            .tab-content-item(v-show="currentTab.integrations"): integrations
-            .tab-content-item(v-show="currentTab.code"): code-settings
-        div(style="display: grid; justify-content:end; margin-top: 20px")
-            button.btn(@click="save") Сохранить настройки
+    #edit-widget-content
+        #loader-block(v-show="!isInitStateReady")
+            img#loader(src="../../../assets/loader.gif")
+        div(v-if="isInitStateReady")
+            h3  {{url | truncate(60)}}
+            .tab-nav
+                .wi
+                    div(v-if="!isRateExpired") Тариф истекает - {{rateExpiredAt}}
+                    .expired(v-if="isRateExpired") Тариф истек - {{rateExpiredAt}}
+                .tab-nav-item(v-bind:class="{active: currentTab.general}" @click="setCurrentTab('general')")
+                    a Основные
+                .tab-nav-item(v-bind:class="{active: currentTab.show}" @click="setCurrentTab('show')")
+                    a Настройки показа
+                .tab-nav-item(v-bind:class="{active: currentTab.integrations}" @click="setCurrentTab('integrations')")
+                    a Интеграции
+                .tab-nav-item(v-bind:class="{active: currentTab.code}" @click="setCurrentTab('code')")
+                    a Код виджета
+            .tab-content
+                .tab-content-item(v-show="currentTab.general"): general
+                .tab-content-item(v-show="currentTab.show"): show
+                .tab-content-item(v-show="currentTab.integrations"): integrations
+                .tab-content-item(v-show="currentTab.code"): code-settings
+            div(style="display: grid; justify-content:end; margin-top: 20px")
+                button.btn(@click="save") Сохранить настройки
 </template>
 
 <script>
@@ -147,4 +150,11 @@
             box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.38)
         &:active
             background: darken(#49af60, 15%)
+
+    #loader-block
+        display: grid
+        justify-content: center
+        padding: 20px
+    #loader
+        width: 50px
 </style>

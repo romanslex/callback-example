@@ -38,7 +38,8 @@
     export default {
         data: function(){
             return {
-                widgets: []
+                widgets: [],
+                isLoaderDisplayed: false
             }
         },
         components: {
