@@ -17,14 +17,14 @@
             .tab-content-item(v-show="currentTab.general"): general
             .tab-content-item(v-show="currentTab.show"): show
             .tab-content-item(v-show="currentTab.integrations"): integrations
-            <!--.tab-content-item(v-show="currentTab.code"): code-->
+            .tab-content-item(v-show="currentTab.code"): code-settings
         div(style="display: grid; justify-content:end; margin-top: 20px")
             button.btn(@click="save") Сохранить настройки
 </template>
 
 <script>
     import General from "./General.vue"
-    // import Code from "./Code.vue"
+    import CodeSettings from "./Code.vue"
     import Show from "./Show.vue"
     import Integrations from "./Integrations.vue"
     import moment from "moment"
@@ -33,7 +33,7 @@
     export default {
         components: {
             General,
-            // Code,
+            CodeSettings,
             Show,
             Integrations,
         },
@@ -132,11 +132,19 @@
                 color: red
 
     .btn
+        font-size: 12px
         padding: 8px 15px
-        font-size: 13px
+        width: max-content
+        border: none
+        color: white
         background: #49af60
+        cursor: pointer
+        text-transform: uppercase
+        outline: none
+        transition: box-shadow 0.15s ease-out, background-color .1s ease-out
         box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33)
-        transition: box-shadow 0.15s ease-out
         &:hover
             box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.38)
+        &:active
+            background: darken(#49af60, 15%)
 </style>
