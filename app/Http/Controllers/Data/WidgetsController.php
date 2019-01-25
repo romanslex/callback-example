@@ -10,15 +10,20 @@ class WidgetsController extends Controller
 {
     public function getWidgets()
     {
-        return auth()->user()->widgets->map(function ($widget) {
-            return [
-                "id" => $widget->id,
-                "url" => $widget->url,
-                "orders" => $widget->lastOrders(),
-                "rateExpiredAt" => $widget->rate_expired_at->format("d.m.Y"),
-                "isExpired" => $widget->isExpired(),
-            ];
-        });
+        return auth()
+            ->user()
+            ->widgets()
+            ->orderBy("created_at")
+            ->get()
+            ->map(function ($widget) {
+                return [
+                    "id" => $widget->id,
+                    "url" => $widget->url,
+                    "orders" => $widget->lastOrders(),
+                    "rateExpiredAt" => $widget->rate_expired_at->format("d.m.Y"),
+                    "isExpired" => $widget->isExpired(),
+                ];
+            });
     }
 
     public function getWidgetById($id)
@@ -55,7 +60,7 @@ class WidgetsController extends Controller
         ]));
         $widget->regions()->delete();
         $regions = collect($request->get("regions"))->map(function ($region) {
-            if (array_key_exists("id", $region)){
+            if (array_key_exists("id", $region)) {
                 return Region::make([
                     "id" => $region["id"],
                     "name" => $region['name'],
@@ -64,10 +69,10 @@ class WidgetsController extends Controller
                 ]);
             }
             return Region::make([
-                    "name" => $region['name'],
-                    "code" => $region["code"],
-                    "uid" => $region["uid"]
-                ]);
+                "name" => $region['name'],
+                "code" => $region["code"],
+                "uid" => $region["uid"]
+            ]);
         });
         $widget->regions()->saveMany($regions);
 
