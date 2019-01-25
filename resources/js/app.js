@@ -1,9 +1,9 @@
-
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+
 
 require('./bootstrap');
 /**
@@ -23,6 +23,9 @@ import App from "./components/App/App.vue"
 
 import VueTruncateFilter from "vue-truncate-filter"
 Vue.use(VueTruncateFilter);
+
+import NotifyPlugin from "./components/Shared/NotifyPlugin/NotifyPlugin";
+Vue.use(NotifyPlugin);
 
 import router from "./router"
 import store from "./store"

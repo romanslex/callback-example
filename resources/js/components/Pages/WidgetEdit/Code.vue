@@ -31,6 +31,7 @@
         methods: {
             copy: function(){
                 this.$copyText(document.getElementById("code-container").innerText);
+                this.$notifySuccess("Код скопирован");
             },
             sendToProgrammer: function(){
                 this.errors = [];
