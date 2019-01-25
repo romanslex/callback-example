@@ -23,7 +23,7 @@
             remove: function(){
                 window.axios
                     .delete("/data/widgets/" + this.wid)
-                    .then(response => window.location.reload())
+                    .then(response => this.$emit("widget-deleted"))
                     .catch(error => console.log("error"));
             }
         }

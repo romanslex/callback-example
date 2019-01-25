@@ -114,4 +114,9 @@ class WidgetsController extends Controller
             "isExpired" => $widget->isExpired(),
         ];
     }
+
+    public function destroy($id)
+    {
+        auth()->user()->widgets()->findOrFail($id)->delete();
+    }
 }

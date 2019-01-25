@@ -21,7 +21,7 @@
                         button.edit-btn.btn
                             i.fal.fa-cog.widget-edit(style="margin-right: 5px")
                             | Настроить
-                    delete-site-confirm(:wid="widget.id" :url="widget.url")
+                    delete-site-confirm(:wid="widget.id" :url="widget.url" @widget-deleted="onWidgetDeleted")
         add-site-form(@widget-added="addWidget")
 </template>
 
@@ -63,6 +63,9 @@
             addWidget(widget){
                 console.log(widget)
                 this.widgets.push(widget)
+            },
+            onWidgetDeleted(){
+                this.getWidgets()
             }
         },
         computed: {
