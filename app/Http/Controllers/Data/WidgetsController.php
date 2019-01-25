@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Data;
 
 use App\Models\Region;
+use App\Models\Widget;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Validation\Rule;
 
 class WidgetsController extends Controller
 {
@@ -77,5 +79,39 @@ class WidgetsController extends Controller
         $widget->regions()->saveMany($regions);
 
         return [];
+    }
+
+    public function store(Request $request)
+    {
+        $request->validate([
+            "url" => [
+                "required",
+                "max:255",
+                Rule::unique("widgets")->where(function ($query) {
+                    return $query->where("owner_id", auth()->user()->id);
+                })
+            ]
+        ]);
+
+        $widget = auth()->user()->widgets()->create([
+            "url" => $request->get("url"),
+            "emails" => [["value" => auth()->user()->email]],
+            "phones" => [],
+            "schedule" => Widget::$defaultSchedule,
+            "window_settings" => null,
+            "btn_settings" => null,
+            "mobile_btn_settings" => null,
+            "mobile_window_settings" => null,
+            "rate_expired_at" => Widget::getRateExpiredAt($request->get('url')),
+            "timezone" => "Europe/Moscow",
+        ]);
+
+        return [
+            "id" => $widget->id,
+            "url" => $widget->url,
+            "orders" => $widget->lastOrders(),
+            "rateExpiredAt" => $widget->rate_expired_at->format("d.m.Y"),
+            "isExpired" => $widget->isExpired(),
+        ];
     }
 }

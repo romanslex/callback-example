@@ -22,7 +22,7 @@
                             i.fal.fa-cog.widget-edit(style="margin-right: 5px")
                             | Настроить
                     delete-site-confirm(:wid="widget.id" :url="widget.url")
-        add-site-form
+        add-site-form(@widget-added="addWidget")
 </template>
 
 <script>
@@ -59,6 +59,10 @@
                         console.log(error);
                         this.isLoaderDisplayed = false;
                     })
+            },
+            addWidget(widget){
+                console.log(widget)
+                this.widgets.push(widget)
             }
         },
         computed: {

@@ -165,6 +165,19 @@ class Widget extends Model
         "weekdays_workdays" => true
     ];
 
+    /**
+     * Вернуть дату конца тестового периода для домена с учетом его
+     * истории использования
+     * @param $url
+     * @return Carbon
+     */
+    public static function getRateExpiredAt($url)
+    {
+        $widget = Widget::where("url", $url)->first();
+        if(!$widget)
+            return Carbon::today()->addDays(7);
+        return $widget->rate_expired_at;
+    }
 
     public function lastOrders()
     {

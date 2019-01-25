@@ -29,7 +29,10 @@
                     .post("/data/widgets", {
                         url: this.url
                     })
-                    .then(response => window.location.href = "/home/widgets/" + response.data.id + "/edit")
+                    .then(response => {
+                        this.$emit("widget-added", response.data);
+                        this.$router.push("/home/widgets/" + response.data.id + "/edit")
+                    })
                     .catch(error => {
                         console.log(error.response);
                         this.isError = true;
