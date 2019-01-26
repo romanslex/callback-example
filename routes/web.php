@@ -11,6 +11,7 @@ Route::post("/data/widgets/send-manual/{id}", "Data\WidgetsController@sendManual
 
 Route::get("/data/payments", "Data\PaymentsController@index");
 
+Route::post("/data/black-ip", "Data\AntispamController@storeIp");
 
 Route::get('/home{any}', 'SpaController@index')->where('any', '.*');
 
