@@ -11,14 +11,25 @@
 </template>
 
 <script>
-    import IpBlackList from "./IpBlackListt.vue"
+    import IpBlackList from "./IpBlackList.vue"
     import PhoneBlackList from "./PhoneBlackList.vue"
 
     export default {
         components: {
             IpBlackList,
             PhoneBlackList,
-        }
+        },
+        computed: {
+            store: {
+                get(){
+                    return this.$store.state.antispamPage;
+                }
+            }
+        },
+        created(){
+            if(!this.store.isAlreadyInitialized)
+                this.$store.dispatch("antispamPage/loadData");
+        },
     }
 </script>
 

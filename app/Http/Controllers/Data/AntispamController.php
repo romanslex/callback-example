@@ -8,6 +8,18 @@ use Illuminate\Validation\Rule;
 
 class AntispamController extends Controller
 {
+    public function index()
+    {
+        return [
+            "blackIps" => auth()->user()->blackIps->map(function($ip){
+                return ["id" => $ip["id"], "ip" => $ip["ip"]];
+            }),
+            "blackPhones" => auth()->user()->blackPhones->map(function($phone){
+                return ["id" => $phone["id"], "number" => $phone["number"]];
+            })
+        ];
+    }
+
     public function storeIp(Request $request)
     {
         $validatedData = $request->validate([

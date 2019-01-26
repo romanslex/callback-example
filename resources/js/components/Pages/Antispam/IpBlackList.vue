@@ -18,17 +18,12 @@
 
 <script>
     export default {
-        props: ["ips"],
         data: function(){
             return {
                 ip: "",
                 errors: [],
                 isBtnDisabled: false,
-                ipBlackList: []
             }
-        },
-        created: function(){
-            this.ipBlackList = this.ips;
         },
         methods:{
             addIp: function(){
@@ -57,6 +52,17 @@
                         this.ipBlackList.splice(i, 1)
                     })
                     .catch(error => this.$notifyDanger())
+            },
+            getInitState(){
+                window.axios
+                    .get("/data/black-ip")
+                    .then(response => this.ipBlackList = response.data)
+                    .catch(error => console.log(error))
+            }
+        },
+        computed: {
+            ipBlackList(){
+                return this.$store.state.antispamPage.blackIps;
             }
         }
     }

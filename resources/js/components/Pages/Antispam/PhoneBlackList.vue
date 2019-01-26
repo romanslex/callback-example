@@ -27,14 +27,9 @@
         data: function(){
             return {
                 phone: "",
-                blacklistPhones: [],
                 isBtnDisabled: false,
                 errors: []
             }
-        },
-        created: function(){
-            this.blacklistPhones = this.phones;
-            console.log("created", this.blacklistPhones);
         },
         methods: {
             addPhone: function(){
@@ -62,6 +57,11 @@
                         this.blacklistPhones.splice(i, 1);
                     })
                     .catch(error => this.$notifyDanger())
+            }
+        },
+        computed: {
+            blacklistPhones(){
+                return this.$store.state.antispamPage.blackPhones;
             }
         }
     }
