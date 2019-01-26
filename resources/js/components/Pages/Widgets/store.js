@@ -1,13 +1,26 @@
 const store = {
     namespaced: true,
     state: {
-        state: null
+        widgets: [],
+        isAlreadyInitialized: false
     },
     mutations: {
-        setState(state, payload){
-            state.state = payload;
+        setWidgets(state, payload){
+            state.widgets = payload;
+            state.isAlreadyInitialized = true;
+        },
+        addWidget(state, widget){
+            state.widgets.push(widget)
         }
     },
+    actions: {
+        setWidgets({commit}, payload){
+            commit("setWidgets", payload)
+        },
+        addWidget({commit}, widget){
+            commit("addWidget", widget)
+        }
+    }
 };
 
 export default store

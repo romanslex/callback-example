@@ -30,8 +30,8 @@
                         url: this.url
                     })
                     .then(response => {
-                        this.$emit("widget-added", response.data);
-                        this.$router.push("/home/widgets/" + response.data.id + "/edit")
+                        this.$store.dispatch("widgetsPage/addWidget", response.data);
+                        this.$router.push("/home/widgets/" + response.data.id + "/edit");
                     })
                     .catch(error => {
                         console.log(error.response);

@@ -24,7 +24,7 @@
                             i.fal.fa-cog.widget-edit(style="margin-right: 5px")
                             | Настроить
                     delete-site-confirm(:wid="widget.id" :url="widget.url" @widget-deleted="onWidgetDeleted")
-        add-site-form(@widget-added="addWidget" v-show="!isLoaderDisplayed")
+        add-site-form(v-show="!isLoaderDisplayed")
 </template>
 
 <script>
@@ -38,7 +38,6 @@
     export default {
         data: function(){
             return {
-                widgets: [],
                 isLoaderDisplayed: false
             }
         },
@@ -58,38 +57,29 @@
                     .get("/data/widgets")
                     .then(response => {
                         this.isLoaderDisplayed = false;
-                        this.widgets = response.data;
+                        this.$store.dispatch("widgetsPage/setWidgets", response.data)
                     })
                     .catch(error => {
                         console.log(error);
                         this.isLoaderDisplayed = false;
                     })
             },
-            addWidget(widget){
-                console.log(widget)
-                this.widgets.push(widget)
-            },
             onWidgetDeleted(){
                 this.getWidgets()
             }
         },
         computed: {
-            store: {
-                get(){
-                    return this.$store.state.widgetsPage;
-                }
+            store(){
+                return this.$store.state.widgetsPage;
+            },
+            widgets(){
+                return this.store.widgets
             }
         },
         created: function(){
             moment.locale("ru");
-            if(this.store.state != null)
-                Object.assign(this.$data, this.store.state);
-            else
-                this.getWidgets();
-        },
-        beforeRouteLeave  (to, from, next) {
-            this.$store.commit("widgetsPage/setState", this.$data);
-            next();
+            if(!this.store.isAlreadyInitialized)
+                this.getWidgets()
         },
     }
 </script>
