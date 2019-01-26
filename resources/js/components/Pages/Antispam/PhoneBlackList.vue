@@ -54,7 +54,7 @@
                 axios
                     .delete("/data/black-phones/" + phone.id)
                     .then(response => {
-                        this.blacklistPhones.splice(i, 1);
+                        this.$store.dispatch("antispamPage/deletePhone", i)
                     })
                     .catch(error => this.$notifyDanger())
             }

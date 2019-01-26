@@ -8,6 +8,7 @@ import WidgetEditPageStore from "./components/Pages/WidgetEdit/store"
 import AntispamPageStore from "./components/Pages/Antispam/store"
 
 const store = new Vuex.Store({
+    strict: true,
     modules: {
         ordersPage: OrdersPageStore,
         widgetsPage: WidgetsPageStore,

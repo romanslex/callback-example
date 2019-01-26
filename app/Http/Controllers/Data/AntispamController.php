@@ -11,10 +11,10 @@ class AntispamController extends Controller
     public function index()
     {
         return [
-            "blackIps" => auth()->user()->blackIps->map(function($ip){
+            "blackIps" => auth()->user()->blackIps->map(function ($ip) {
                 return ["id" => $ip["id"], "ip" => $ip["ip"]];
             }),
-            "blackPhones" => auth()->user()->blackPhones->map(function($phone){
+            "blackPhones" => auth()->user()->blackPhones->map(function ($phone) {
                 return ["id" => $phone["id"], "number" => $phone["number"]];
             })
         ];
@@ -49,5 +49,17 @@ class AntispamController extends Controller
 
         $phone = auth()->user()->blackPhones()->create(["number" => $validatedData["number"]]);
         return $phone;
+    }
+
+    public function deleteIp($id)
+    {
+        auth()->user()->blackIps()->findOrFail($id)->delete();
+        return [];
+    }
+
+    public function deletePhone($id)
+    {
+        auth()->user()->blackPhones()->findOrFail($id)->delete();
+        return [];
     }
 }

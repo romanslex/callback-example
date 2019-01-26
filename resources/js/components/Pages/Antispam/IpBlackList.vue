@@ -9,7 +9,7 @@
 
         h4(style="margin-top: 10px; font-weight: 400") Черный список ip
         #ip-list
-            .ip-list-item(v-for="(ip, i) in ipBlackList" :key="i")
+            .ip-list-item(v-for="(ip, i) in ipBlackList" :key="ip.id")
                 span {{ip.ip}}
                 i.far.fa-times-circle.del-ip(@click="removeIp(ip, i)")
             div(v-if="ipBlackList.length < 1" style="font-size: 12px")
@@ -49,7 +49,7 @@
                 window.axios
                     .delete("/data/black-ip/" + ip.id)
                     .then(response => {
-                        this.ipBlackList.splice(i, 1)
+                        this.$store.dispatch("antispamPage/deleteIp", i)
                     })
                     .catch(error => this.$notifyDanger())
             },

@@ -12,8 +12,10 @@ Route::post("/data/widgets/send-manual/{id}", "Data\WidgetsController@sendManual
 Route::get("/data/payments", "Data\PaymentsController@index");
 
 Route::post("/data/black-ip", "Data\AntispamController@storeIp");
+Route::delete("/data/black-ip/{id}", "Data\AntispamController@deleteIp");
 Route::get("/data/antispam", "Data\AntispamController@index");
 Route::post("/data/black-phones", "Data\AntispamController@storePhone");
+Route::delete("/data/black-phones/{id}", "Data\AntispamController@deletePhone");
 
 Route::get('/home{any}', 'SpaController@index')->where('any', '.*');
 

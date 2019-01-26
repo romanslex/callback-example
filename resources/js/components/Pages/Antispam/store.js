@@ -10,7 +10,14 @@ const store = {
             state.blackIps = payload.blackIps;
             state.blackPhones = payload.blackPhones;
             state.isAlreadyInitialized = true;
+        },
+        deleteIp(state, payload){
+            state.blackIps.splice(payload, 1)
+        },
+        deletePhone(state, payload){
+            state.blackPhones.splice(payload, 1)
         }
+
     },
     actions: {
         loadData({commit}){
@@ -20,7 +27,13 @@ const store = {
                     commit("initState", response.data);
                 })
                 .catch(error => {})
-        }
+        },
+        deleteIp({commit}, payload){
+            commit("deleteIp", payload)
+        },
+        deletePhone({commit}, payload){
+            commit("deletePhone", payload)
+        },
     }
 };
 
