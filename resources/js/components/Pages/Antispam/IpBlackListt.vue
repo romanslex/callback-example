@@ -40,7 +40,7 @@
                     .post("/data/black-ip", {ip: this.ip})
                     .then(response => {
                         this.isBtnDisabled = false;
-                        this.$notifySuccess();
+                        this.$notifySuccess("IP добавлен в список");
                         this.ipBlackList.push(response.data);
                         this.ip = "";
                     })

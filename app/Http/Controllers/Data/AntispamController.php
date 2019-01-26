@@ -23,4 +23,19 @@ class AntispamController extends Controller
         $ip = auth()->user()->blackIps()->create(["ip" => $validatedData["ip"]]);
         return $ip;
     }
+
+    public function storePhone(Request $request)
+    {
+        $validatedData = $request->validate([
+            "number" => [
+                "required",
+                Rule::unique('black_phones')->where(function ($query) {
+                    return $query->where('user_id', auth()->user()->id);
+                })
+            ],
+        ]);
+
+        $phone = auth()->user()->blackPhones()->create(["number" => $validatedData["number"]]);
+        return $phone;
+    }
 }

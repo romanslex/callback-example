@@ -45,7 +45,7 @@
                     .post("/data/black-phones", {number: this.phone})
                     .then(response => {
                         this.isBtnDisabled = false;
-                        this.$notifySuccess();
+                        this.$notifySuccess("Телефон добавлен в список");
                         this.blacklistPhones.push(response.data);
                         this.phone = "";
                     })
