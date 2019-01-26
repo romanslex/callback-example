@@ -16,6 +16,13 @@ const store = {
         },
         deletePhone(state, payload){
             state.blackPhones.splice(payload, 1)
+        },
+
+        addIp(state, payload){
+            state.blackIps.push(payload);
+        },
+        addPhone(state, payload){
+            state.blackPhones.push(payload);
         }
 
     },
@@ -33,6 +40,13 @@ const store = {
         },
         deletePhone({commit}, payload){
             commit("deletePhone", payload)
+        },
+
+        addIp({commit}, payload){
+            commit("addIp", payload);
+        },
+        addPhone({commit}, payload){
+            commit("addPhone", payload);
         },
     }
 };

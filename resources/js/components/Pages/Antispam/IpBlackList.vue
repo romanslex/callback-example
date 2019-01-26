@@ -36,7 +36,7 @@
                     .then(response => {
                         this.isBtnDisabled = false;
                         this.$notifySuccess("IP добавлен в список");
-                        this.ipBlackList.push(response.data);
+                        this.$store.dispatch("antispamPage/addIp", response.data);
                         this.ip = "";
                     })
                     .catch(error => {

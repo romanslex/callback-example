@@ -41,12 +41,13 @@
                     .then(response => {
                         this.isBtnDisabled = false;
                         this.$notifySuccess("Телефон добавлен в список");
-                        this.blacklistPhones.push(response.data);
+                        this.$store.dispatch("antispamPage/addPhone", response.data);
                         this.phone = "";
                     })
                     .catch(error => {
                         this.$notifyDanger();
                         this.isBtnDisabled = false;
+                        console.log(error);
                         this.errors = error.response.data.errors.number;
                     })
             },
