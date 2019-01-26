@@ -10,12 +10,13 @@
         data: function(){
             return {
                 success: false,
-                text: "Изменения успешно сохранены",
+                defaultText: "Изменения успешно сохранены",
+                text: "",
             }
         },
         methods: {
             notify: function(text){
-                this.text = text || this.text;
+                this.text = text || this.defaultText;
                 this.success = true;
                 setTimeout(() => this.success = false, 2000);
             }
