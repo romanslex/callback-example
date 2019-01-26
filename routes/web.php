@@ -17,6 +17,8 @@ Route::get("/data/antispam", "Data\AntispamController@index");
 Route::post("/data/black-phones", "Data\AntispamController@storePhone");
 Route::delete("/data/black-phones/{id}", "Data\AntispamController@deletePhone");
 
+Route::post("/data/feedback/send-comment", "Data\FeedbackController@sendComment");
+
 Route::get('/home{any}', 'SpaController@index')->where('any', '.*');
 
 Auth::routes();
