@@ -15,11 +15,11 @@
         },
         methods: {
             notify: function(text){
-                this.text = text || this.text
+                this.text = text || this.text;
                 this.success = true;
                 setTimeout(() => this.success = false, 2000);
             }
-        }
+        },
     }
 </script>
 

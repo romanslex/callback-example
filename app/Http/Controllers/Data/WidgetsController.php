@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\Data;
 
+use App\Mail\WidgetManual;
 use App\Models\Region;
 use App\Models\Widget;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rule;
 
 class WidgetsController extends Controller
@@ -118,5 +120,18 @@ class WidgetsController extends Controller
     public function destroy($id)
     {
         auth()->user()->widgets()->findOrFail($id)->delete();
+    }
+
+    public function sendManual(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            "email" => "required|email"
+        ]);
+
+        $widget = auth()->user()->widgets()->findOrFail($id);
+
+//        Mail::to($validatedData["email"])
+//            ->send(new WidgetManual($widget));
+        return [];
     }
 }

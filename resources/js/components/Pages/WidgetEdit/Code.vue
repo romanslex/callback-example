@@ -36,7 +36,7 @@
             sendToProgrammer: function(){
                 this.errors = [];
                 window.axios
-                    .post("/data/widgets/send-manual/" + this.id, {email: this.email})
+                    .post("/data/widgets/send-manual/" + this.widgetId, {email: this.email})
                     .then(response => {
                         this.$notifySuccess("Инструкция отправленна");
                         this.email = "";
