@@ -22,6 +22,8 @@ Route::post("/data/feedback/send-comment", "Data\FeedbackController@sendComment"
 Route::get("home/window-appearance/{id}", "WindowAppearanceController@index");
 Route::put("home/window-appearance/{id}", "WindowAppearanceController@update");
 
+Route::get("home/btn-appearance/{id}", "BtnAppearanceController@index");
+
 Route::get('/home{any}', 'SpaController@index')->where('any', '.*');
 
 Auth::routes();

@@ -48,7 +48,7 @@
 </template>
 
 <script>
-    import ColorPicker from "../../../../shared/ColorPicker.vue"
+    import ColorPicker from "../../../../Shared/ColorPicker.vue"
     import Color from "color"
 
     export default {
