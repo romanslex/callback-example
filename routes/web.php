@@ -23,6 +23,7 @@ Route::get("home/window-appearance/{id}", "WindowAppearanceController@index");
 Route::put("home/window-appearance/{id}", "WindowAppearanceController@update");
 
 Route::get("home/btn-appearance/{id}", "BtnAppearanceController@index");
+Route::put("home/btn-appearance/{id}", "BtnAppearanceController@update");
 
 Route::get('/home{any}', 'SpaController@index')->where('any', '.*');
 
