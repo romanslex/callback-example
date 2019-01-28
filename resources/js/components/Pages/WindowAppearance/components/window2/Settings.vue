@@ -7,43 +7,43 @@
                 .cti-real(:style='{background: theme.btnBgColor}')
         h4 Цвет фона
         color-picker(v-model='overlayColor')
-            h4 Цвет кнопки
-            color-picker(v-model='btnBgColor')
-                h4 Произвольная тема
-                color-picker(v-model='mainColor')
-                    h3(style='margin-top: 20px;') Фразы
-                    .phrase-container
-                        header(@click="changeCurrentState('general')") Обычное состояние
-                        .body(:class="{'closed': currentState !== 'general'}", style='height: 268px')
-                            h4 Заголовок
-                            textarea(v-model='phrases.general.header', maxlength='50', style='height: 46px')
-                            h4 Текст
-                            textarea(v-model='phrases.general.text', maxlength='140', style='height: 115px;')
-                            h4 Кнопка
-                            input(type='text', v-model='phrases.general.btnText', maxlength='20')
-                    .phrase-container
-                        header(@click="changeCurrentState('on-exit')") Окно на выходе
-                        .body(:class="{'closed': currentState !== 'on-exit'}", style='height: 268px')
-                            h4 Заголовок
-                            textarea(v-model='phrases.onExit.header', maxlength='50', style='height: 46px')
-                            h4 Текст
-                            textarea(v-model='phrases.onExit.text', maxlength='140', style='height: 115px;')
-                            h4 Кнопка
-                            input(type='text', v-model='phrases.onExit.btnText', maxlength='20')
-                    .phrase-container
-                        header(@click="changeCurrentState('after-sending')") Сообщение после отправки
-                        .body(:class="{'closed': currentState !== 'after-sending'}", style='height: 65px')
-                            h4 Заголовок
-                            textarea(v-model='phrases.afterSending.header', maxlength='50', style='margin-bottom: 0; height: 46px')
-                    .phrase-container
-                        header(@click="changeCurrentState('not-working-hours')") В нерабочее время
-                        .body(:class="{'closed': currentState !== 'not-working-hours'}", style='height: 268px')
-                            h4 Заголовок
-                            textarea(v-model='phrases.notWorkingHours.header', maxlength='50', style='height: 46px')
-                            h4 Текст
-                            textarea(v-model='phrases.notWorkingHours.text', maxlength='140', style='height: 115px;')
-                            h4 Кнопка
-                            input(type='text', v-model='phrases.notWorkingHours.btnText', maxlength='20')
+        h4 Цвет кнопки
+        color-picker(v-model='btnBgColor')
+        h4 Произвольная тема
+        color-picker(v-model='mainColor')
+        h3(style='margin-top: 20px;') Фразы
+        .phrase-container
+            header(@click="changeCurrentState('general')") Обычное состояние
+            .body(:class="{'closed': currentState !== 'general'}", style='height: 268px')
+                h4 Заголовок
+                textarea(v-model='phrases.general.header', maxlength='50', style='height: 46px')
+                h4 Текст
+                textarea(v-model='phrases.general.text', maxlength='140', style='height: 115px;')
+                h4 Кнопка
+                input(type='text', v-model='phrases.general.btnText', maxlength='20')
+        .phrase-container
+            header(@click="changeCurrentState('on-exit')") Окно на выходе
+            .body(:class="{'closed': currentState !=='on-exit'}", style='height: 268px')
+                h4 Заголовок
+                textarea(v-model='phrases.onExit.header', maxlength='50', style='height: 46px')
+                h4 Текст
+                textarea(v-model='phrases.onExit.text', maxlength='140', style='height: 115px;')
+                h4 Кнопка
+                input(type='text', v-model='phrases.onExit.btnText', maxlength='20')
+        .phrase-container
+            header(@click="changeCurrentState('after-sending')") Сообщение после отправки
+            .body(:class="{'closed': currentState !== 'after-sending'}", style='height: 65px')
+                h4 Заголовок
+                textarea(v-model='phrases.afterSending.header', maxlength='50', style='margin-bottom: 0; height: 46px')
+        .phrase-container
+            header(@click="changeCurrentState('not-working-hours')") В нерабочее время
+            .body(:class="{'closed': currentState !== 'not-working-hours'}", style='height: 268px')
+                h4 Заголовок
+                textarea(v-model='phrases.notWorkingHours.header', maxlength='50', style='height: 46px')
+                h4 Текст
+                textarea(v-model='phrases.notWorkingHours.text', maxlength='140', style='height: 115px;')
+                h4 Кнопка
+                input(type='text', v-model='phrases.notWorkingHours.btnText', maxlength='20')
 
 </template>
 

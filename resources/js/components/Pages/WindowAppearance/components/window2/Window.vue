@@ -12,8 +12,8 @@
                     .lmb_window-text
                         p {{phrases.general.text}}
                     .lmb_window-form
-                        masked-input.lmb_window-form-input(mask='\+\7(111)111-11-11', placeholder='+7(___)___-__-__', v-model='phone')
-                            button.lmb_window-form-btn(:style='btnStyles') {{phrases.general.btnText}}
+                        masked-input.lmb_window-form-input(mask='\\+\\7(111)111-11-11', placeholder='+7(___)___-__-__', v-model='phone')
+                        button.lmb_window-form-btn(:style='btnStyles') {{phrases.general.btnText}}
                     .lmb_window-eula
                         input.lmb_window-eula-check(type='checkbox', checked='checked')
                         |                     Согласен с
@@ -24,8 +24,8 @@
                     .lmb_window-text
                         p {{phrases.onExit.text}}
                     .lmb_window-form
-                        masked-input.lmb_window-form-input(mask='\+\7(111)111-11-11', placeholder='+7(___)___-__-__', v-model='phone')
-                            button.lmb_window-form-btn(:style='btnStyles') {{phrases.onExit.btnText}}
+                        masked-input.lmb_window-form-input(mask='\\+\\7(111)111-11-11', placeholder='+7(___)___-__-__', v-model='phone')
+                        button.lmb_window-form-btn(:style='btnStyles') {{phrases.onExit.btnText}}
                     .lmb_window-eula
                         input.lmb_window-eula-check(type='checkbox', checked='checked')
                         |                     Согласен с
@@ -39,8 +39,8 @@
                     .lmb_window-text
                         p {{phrases.notWorkingHours.text}}
                     .lmb_window-form
-                        masked-input.lmb_window-form-input(mask='\+\7(111)111-11-11', placeholder='+7(___)___-__-__', v-model='phone')
-                            button.lmb_window-form-btn(:style='btnStyles') {{phrases.notWorkingHours.btnText}}
+                        masked-input.lmb_window-form-input(mask='\\+\\7(111)111-11-11', placeholder='+7(___)___-__-__', v-model='phone')
+                        button.lmb_window-form-btn(:style='btnStyles') {{phrases.notWorkingHours.btnText}}
                     .lmb_window-eula
                         input.lmb_window-eula-check(type='checkbox', checked='checked')
                         |                     Согласен с

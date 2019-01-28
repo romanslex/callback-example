@@ -10,19 +10,19 @@
             .lmb_window-header {{generalHeader}}
             .lmb_window-text {{generalText}}
             .lmb_window-form
-                masked-input(placeholder="+7(___)___-__-__" v-model="phone" mask="\\+\\7(111)111-11-11" )
+                masked-input(placeholder="+7(___)___-__-__" v-model="phone" mask="\\+\\7(111)111-11-11")
                 button.lmb_window-form-btn(:style="btnStyles") {{generalBtnText}}
                 .lmb_window-eula
-                    input.lmb_window-eula-check(checked="checked")
+                    input.lmb_window-eula-check(type="checkbox" checked="checked")
                     |  Согласен с <a>политикой конфиденциальности</a>
         .lmb_on-exit(v-show="currentState === 'on-exit'")
             .lmb_window-header {{onExitHeader}}
             .lmb_window-text {{onExitText}}
             .lmb_window-form
-                masked-input(placeholder="+7(___)___-__-__" v-model="phone" mask="\\+\\7(111)111-11-11" )
+                masked-input(placeholder="+7(___)___-__-__" v-model="phone" mask="\\+\\7(111)111-11-11")
                 button.lmb_window-form-btn(:style="btnStyles") {{onExitBtnText}}
                 .lmb_window-eula
-                    input.lmb_window-eula-check(checked="checked")
+                    input.lmb_window-eula-check(type="checkbox" checked="checked")
                     |  Согласен с <a>политикой конфиденциальности</a>
         .lmb_after-sending(v-show="currentState === 'after-sending'")
             .lmb_window-header {{afterSendingHeader}}
@@ -30,10 +30,10 @@
             .lmb_window-header {{notWorkingHoursHeader}}
             .lmb_window-text {{notWorkingHoursText}}
             .lmb_window-form
-                masked-input(placeholder="+7(___)___-__-__" v-model="phone" mask="\\+\\7(111)111-11-11" )
+                masked-input(placeholder="+7(___)___-__-__" v-model="phone" mask="\\+\\7(111)111-11-11")
                 button.lmb_window-form-btn(:style="btnStyles") {{notWorkingHoursBtnText}}
                 .lmb_window-eula
-                    input.lmb_window-eula-check(checked="checked")
+                    input.lmb_window-eula-check(type="checkbox" checked="checked")
                     |  Согласен с <a>политикой конфиденциальности</a>
 </template>
 
@@ -110,70 +110,70 @@
 
 <style scoped lang="stylus">
     #lmb_window
-        position: fixed
-        width: calc(100% - 300px)
-        height: 100%
-        top: 0
-        right: 0
-        font-family: Roboto
-        animation-duration: 0.6s
+        position fixed
+        width calc(100% - 300px)
+        height 100%
+        top 0
+        right 0
+        font-family Roboto
+        animation-duration 0.6s
     #lmb_window-close
-        margin-top: 40px
-        text-align: center
-    #lmb_window-close-img:hover
-        transform: rotate(90deg)
-    #lmb_window-header
-        font-size: 60px
-        text-align: center
-        margin-top: 70px
-        font-weight: 100
-    #lmb_window-text
-        font-size: 20px
-        font-weight: 300
-        text-align: center
-        margin-top: 10px
-        padding: 0 70px
-        line-height: 30px
-    #lmb_window-form
-        text-align: center
-        margin-top: 20px
-        display: grid
-        grid-template-columns: max-content max-content
-        grid-template-rows: 53px
-        justify-content: center
+        margin-top 40px
+        text-align center
+    #lmb_window-close-img
+        transition all 0.2s
+        cursor pointer
+        &:hover
+            transform rotate(90deg)
+    .lmb_window-header
+        font-size 60px
+        text-align center
+        margin-top 70px
+        font-weight 100
+    .lmb_window-text
+        font-size 20px
+        font-weight 300
+        text-align center
+        margin-top 10px
+        padding 0 70px
+        line-height 30px
+    .lmb_window-form
+        text-align center
+        margin-top 20px
+        display grid
+        grid-template-columns max-content max-content
+        grid-template-rows 53px
+        justify-content center
+        input
+            font-size 30px
+            font-family Roboto
+            font-weight 300
+            padding 6px 20px
+            outline none
+            border-radius 4px
+            border solid 1px white
     .lmb_window-eula
-        margin-top: 5px !important
-        text-align: initial
+        margin-top 5px !important
+        text-align initial
         a
-            text-decoration: underline !important
-            cursor: pointer !important
+            text-decoration underline !important
+            cursor pointer !important
     .lmb_window-eula, .lmb_window-eula a
-        color: white !important
-        font-weight: 300 !important
-        font-size: 13px !important
-
-    #lmb_window-form input
-        font-size: 30px
-        font-family: Roboto
-        font-weight: 300
-        padding: 6px 20px
-        outline: none
-
-        border-radius: 4px
-        border: solid 1px white
-    #lmb_window-form-btn
-        border: none
-        border-radius: 4px
-        font-size: 18px
-        padding: 16px 25px
-        margin-left: 5px
-        cursor: pointer
-
+        color white !important
+        font-weight 300 !important
+        font-size 13px !important
+    .lmb_window-form-btn
+        border none
+        border-radius 4px
+        font-size 18px
+        padding 16px 25px
+        margin-left 5px
+        cursor pointer
     .lightSpeedIn
-        animation-name: lightSpeedIn
-        animation-timing-function: ease-out
-        animation-fill-mode: both
+        animation-name lightSpeedIn
+        animation-timing-function ease-out
+        animation-fill-mode both
     .bounceOutDown
-        animation-name: bounceOutDown
-        animation-fill-mode: both
+        animation-name bounceOutDown
+        animation-fill-mode both
 </style>

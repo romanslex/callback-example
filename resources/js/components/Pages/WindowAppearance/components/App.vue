@@ -7,8 +7,8 @@
                 option(value="w2") Окно 2
 
             h3(style="margin-top: 10px") Настройки
-                settings1(v-show="currentWindow === 'w1'")
-                settings2(v-show="currentWindow === 'w1'")
+            settings1(v-show="currentWindow === 'w1'")
+            settings2(v-show="currentWindow === 'w2'")
 
             .btn-wrap
                 button.btn(@click="save") Сохранить

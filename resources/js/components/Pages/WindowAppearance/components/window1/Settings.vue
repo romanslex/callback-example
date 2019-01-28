@@ -7,45 +7,45 @@
                 .cti-real(:style='{background: theme.bgColor}')
         h4 Цвет фона
         color-picker(v-model='bgColor')
-            h4 Цвет текста
-            color-picker(v-model='fontColor')
-                h4 Цвет кнопки
-                color-picker(v-model='btnBgColor')
-                    h4 Цвет текста кнопки
-                    color-picker(v-model='btnFontColor')
-                        h3(style='margin-top: 20px;') Фразы
-                        .phrase-container
-                            header(@click="changeCurrentState('general')") Обычное состояние
-                            .body(:class="{'closed': currentState !== 'general'}", style='height: 268px;')
-                                h4 Заголовок
-                                textarea(v-model='generalHeader', maxlength='50', style='height: 46px;')
-                                h4 Текст
-                                textarea(v-model='generalText', maxlength='140', style='height: 115px;')
-                                h4 Кнопка
-                                input(type='text', v-model='generalBtnText', maxlength='20')
-                        .phrase-container
-                            header(@click="changeCurrentState('on-exit')") Окно на выходе
-                            .body(:class="{'closed': currentState !== 'on-exit'}", style='height: 268px;')
-                                h4 Заголовок
-                                textarea(v-model='onExitHeader', maxlength='50', style='height: 46px;')
-                                h4 Текст
-                                textarea(v-model='onExitText', maxlength='140', style='height: 115px;')
-                                h4 Кнопка
-                                input(type='text', v-model='onExitBtnText', maxlength='20')
-                        .phrase-container
-                            header(@click="changeCurrentState('after-sending')") Сообщение после отправки
-                            .body(:class="{'closed': currentState !== 'after-sending'}", style='height: 65px;')
-                                h4 Заголовок
-                                textarea(v-model='afterSendingHeader', maxlength='50', style='margin-bottom: 0; height: 46px;')
-                        .phrase-container
-                            header(@click="changeCurrentState('not-working-hours')") В нерабочее время
-                            .body(:class="{'closed': currentState !== 'not-working-hours'}", style='height: 268px;')
-                                h4 Заголовок
-                                textarea(v-model='notWorkingHoursHeader', maxlength='50', style='height: 46px;')
-                                h4 Текст
-                                textarea(v-model='notWorkingHoursText', maxlength='140', style='height: 115px;')
-                                h4 Кнопка
-                                input(type='text', v-model='notWorkingHoursBtnText', maxlength='20')
+        h4 Цвет текста
+        color-picker(v-model='fontColor')
+        h4 Цвет кнопки
+        color-picker(v-model='btnBgColor')
+        h4 Цвет текста кнопки
+        color-picker(v-model='btnFontColor')
+        h3(style='margin-top: 20px;') Фразы
+        .phrase-container
+            header(@click="changeCurrentState('general')") Обычное состояние
+            .body(:class="{'closed': currentState !== 'general'}", style='height: 268px')
+                h4 Заголовок
+                textarea(v-model='generalHeader', maxlength='50', style='height: 46px')
+                h4 Текст
+                textarea(v-model='generalText', maxlength='140', style='height: 115px;')
+                h4 Кнопка
+                input(type='text', v-model='generalBtnText', maxlength='20')
+        .phrase-container
+            header(@click="changeCurrentState('on-exit')") Окно на выходе
+            .body(:class="{'closed': currentState !== 'on-exit'}", style='height: 268px')
+                h4 Заголовок
+                textarea(v-model='onExitHeader', maxlength='50', style='height: 46px')
+                h4 Текст
+                textarea(v-model='onExitText', maxlength='140', style='height: 115px;')
+                h4 Кнопка
+                input(type='text', v-model='onExitBtnText', maxlength='20')
+        .phrase-container
+            header(@click="changeCurrentState('after-sending')") Сообщение после отправки
+            .body(:class="{'closed': currentState !== 'after-sending'}", style='height: 65px')
+                h4 Заголовок
+                textarea(v-model='afterSendingHeader', maxlength='50', style='margin-bottom: 0; height: 46px')
+        .phrase-container
+            header(@click="changeCurrentState('not-working-hours')") В нерабочее время
+            .body(:class="{'closed': currentState !== 'not-working-hours'}", style='height: 268px')
+                h4 Заголовок
+                textarea(v-model='notWorkingHoursHeader', maxlength='50', style='height: 46px')
+                h4 Текст
+                textarea(v-model='notWorkingHoursText', maxlength='140', style='height: 115px;')
+                h4 Кнопка
+                input(type='text', v-model='notWorkingHoursBtnText', maxlength='20')
 </template>
 
 <script>
@@ -284,7 +284,7 @@
         position absolute
         top 0
         left 0
-        background url("data:image/jpg;base64,iVBORw0KGgoAAAANSUhEUgAAAJcAAACYCAMAAADeF4ueAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAZQTFRFv7+/////mcP/dAAAAJ1JREFUeNrs1rEJADAIRUHdf+k0TpB8hMClSyNX6aua1/Me/6lxxcXFxfWrq7MDY+O4uLi4lveYO8TFxaW/uLi4uPQXFxeX/rLvubh0jr3KxcWlc9whLi4u/cXFxcWlv7i4uPSXO8TFxaW/3CEuLi79xcXFpb/sey4uLv3lDnFxcekvLi4uLv3FxcWlv9whLi4u/eUOcXFx3f+PAAMArO4sqLy5/IwAAAAASUVORK5CYII=");
+        background url("data:image/jpg;base64,iVBORw0KGgoAAAANSUhEUgAAAJcAAACYCAMAAADeF4ueAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAZQTFRFv7+/////mcP/dAAAAJ1JREFUeNrs1rEJADAIRUHdf+k0TpB8hMClSyNX6aua1/Me/6lxxcXFxfWrq7MDY+O4uLi4lveYO8TFxaW/uLi4uPQXFxeX/rLvubh0jr3KxcWlc9whLi4u/cXFxcWlv7i4uPSXO8TFxaW/3CEuLi79xcXFpb/sey4uLv3lDnFxcekvLi4uLv3FxcWlv9whLi4u/eUOcXFx3f+PAAMArO4sqLy5/IwAAAAASUVORK5CYII=")
     .cti-real
         width 100%
         height 100%
@@ -312,5 +312,11 @@
             transition all 0.3s
             overflow hidden
             &.closed
-                height 0 !im
+                height 0 !important
+                padding-bottom 0 !important
+                padding-top 0 !important
+        h4
+            font-weight 500
+            font-size 12px
+
 </style>
