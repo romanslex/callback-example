@@ -44,5 +44,8 @@ const app = new Vue({
     components: {
         App
     },
-    render: h => h(App)
+    render: h => h(App),
+    created(){
+        this.$store.dispatch("initUser");
+    }
 }).$mount("#app");

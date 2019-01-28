@@ -13,7 +13,7 @@
     </style>
 </head>
 <body>
-<div id="app">
+<div id="app" data-user="{{ json_encode($user) }}">
 </div>
 
 <script src="/js/app.js"></script>

@@ -47,7 +47,6 @@
         },
         data: function(){
             return {
-                user: {},
                 name: "",
                 email: "",
                 phone: "",
@@ -105,6 +104,11 @@
                         this.passErrors.current_password = error.response.data.errors.current_password || [];
                         this.passErrors.new_password = error.response.data.errors.new_password || [];
                     })
+            }
+        },
+        computed: {
+            user(){
+                return this.$store.state.user
             }
         }
     }

@@ -16,8 +16,24 @@ const store = new Vuex.Store({
         antispamPage: AntispamPageStore,
     },
     state: {
+        user: {
+            name: "",
+            email: "",
+            total: ""
+        }
     },
     mutations: {
+        initUser(state, user){
+            state.user.name = user.name;
+            state.user.email = user.email;
+            state.user.total = user.total;
+        }
+    },
+    actions: {
+        initUser({commit}){
+            let user = JSON.parse(document.getElementById("app").dataset["user"]);
+            commit("initUser", user)
+        }
     }
 });
 

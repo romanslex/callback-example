@@ -13,6 +13,11 @@ class SpaController extends Controller
 
     public function index()
     {
-        return view("spa");
+        $user = [
+            "name" => auth()->user()->name,
+            "email" => auth()->user()->email,
+            "total" => auth()->user()->total
+        ];
+        return view("spa", ["user" => $user]);
     }
 }

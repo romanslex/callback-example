@@ -7,11 +7,11 @@
         #profile_bar-avatar
             i.fas.fa-user-circle
         #profile_bar-name
-            | Roman
+            | {{user.name | truncate(50)}}
         #profile_bar-email
-            | email@exapmle.com
+            | {{user.email | truncate(30)}}
         #profile_balance
-            | Баланс: 15500 руб.
+            | Баланс: {{formattedBalance}} руб.
         #profile_bar-arrow
             i.fas.fa-caret-down
         #profile_dropdown(v-show="isWindowOpen")
@@ -41,6 +41,16 @@
         data: function(){
             return {
                 isWindowOpen: false
+            }
+        },
+        computed: {
+            user(){
+                console.log(this.$store.state.user)
+                return this.$store.state.user
+            },
+            formattedBalance(){
+                var remainder = this.user.total.length % 3;
+                return (this.user.total.substr(0, remainder) + this.user.total.substr(remainder).replace(/(\d{3})/g, ' $1')).trim();
             }
         },
         methods: {
