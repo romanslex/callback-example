@@ -4,7 +4,8 @@ const VueLoaderPlugin = require("vue-loader/lib/plugin");
 
 module.exports = {
     entry: {
-        "app": "./resources/js/app.js"
+        "app": "./resources/js/app.js",
+        "window-appearance": "./resources/js/components/Pages/WindowAppearance/index.js"
     },
     output: {
         filename: "js/[name].js",
