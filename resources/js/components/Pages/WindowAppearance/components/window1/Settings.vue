@@ -139,7 +139,7 @@
                     return this.widget.bgColor;
                 },
                 set: function (newValue) {
-                    this.$store.dispatch("w1ChangeBgColor", newValue);
+                    this.$store.commit("w1/changeBgColor", newValue)
                 }
             },
             fontColor: {
@@ -147,7 +147,7 @@
                     return this.widget.fontColor;
                 },
                 set: function (newValue) {
-                    this.$store.dispatch("w1ChangeFontColor", newValue);
+                    this.$store.commit("w1/changeFontColor", newValue)
                 }
             },
             btnBgColor: {
@@ -155,7 +155,7 @@
                     return this.widget.btnBgColor;
                 },
                 set: function (newValue) {
-                    this.$store.dispatch("w1ChangeBtnBgColor", newValue);
+                    this.$store.commit("w1/changeBtnBgColor", newValue)
                 }
             },
             btnFontColor: {
@@ -163,7 +163,7 @@
                     return this.widget.btnFontColor;
                 },
                 set: function (newValue) {
-                    this.$store.dispatch("w1ChangeBtnFontColor", newValue);
+                    this.$store.commit("w1/changeBtnFontColor", newValue)
                 }
             },
 
@@ -172,7 +172,7 @@
                     return this.widget.phrases.general.header;
                 },
                 set: function (newValue) {
-                    this.$store.dispatch("w1ChangeGeneralHeader", newValue);
+                    this.$store.commit("w1/changeGeneralHeader", newValue)
                 }
             },
             generalText: {
@@ -180,7 +180,7 @@
                     return this.widget.phrases.general.text;
                 },
                 set: function (newValue) {
-                    this.$store.dispatch("w1ChangeGeneralText", newValue)
+                    this.$store.commit("w1/changeGeneralText", newValue)
                 }
             },
             generalBtnText: {
@@ -188,7 +188,7 @@
                     return this.widget.phrases.general.btnText;
                 },
                 set: function (newValue) {
-                    this.$store.dispatch("w1ChangeGeneralBtnText", newValue)
+                    this.$store.commit("w1/changeGeneralBtnText", newValue)
                 }
             },
 
@@ -197,7 +197,7 @@
                     return this.widget.phrases.onExit.header;
                 },
                 set: function (newValue) {
-                    this.$store.dispatch("w1ChangeOnExitHeader", newValue);
+                    this.$store.commit("w1/changeOnExitHeader", newValue)
                 }
             },
             onExitText: {
@@ -205,7 +205,7 @@
                     return this.widget.phrases.onExit.text;
                 },
                 set: function (newValue) {
-                    this.$store.dispatch("w1ChangeOnExitText", newValue);
+                    this.$store.commit("w1/changeOnExitText", newValue)
                 }
             },
             onExitBtnText: {
@@ -213,7 +213,7 @@
                     return this.widget.phrases.onExit.btnText;
                 },
                 set: function (newValue) {
-                    this.$store.dispatch("w1ChangeOnExitBtnText", newValue);
+                    this.$store.commit("w1/changeOnExitBtnText", newValue)
                 }
             },
 
@@ -222,7 +222,7 @@
                     return this.widget.phrases.afterSending.header;
                 },
                 set: function (newValue) {
-                    this.$store.dispatch("w1ChangeAfterSendingHeader", newValue);
+                    this.$store.commit("w1/changeAfterSendingHeader", newValue)
                 }
             },
 
@@ -231,7 +231,7 @@
                     return this.widget.phrases.notWorkingHours.header
                 },
                 set: function (newValue) {
-                    this.$store.dispatch("w1ChangeNotWorkingHoursHeader", newValue)
+                    this.$store.commit("w1/changeNotWorkingHoursHeader", newValue)
                 }
             },
             notWorkingHoursText: {
@@ -239,7 +239,7 @@
                     return this.widget.phrases.notWorkingHours.text
                 },
                 set: function (newValue) {
-                    this.$store.dispatch("w1ChangeNotWorkingHoursText", newValue)
+                    this.$store.commit("w1/changeNotWorkingHoursText", newValue)
                 }
             },
             notWorkingHoursBtnText: {
@@ -247,20 +247,20 @@
                     return this.widget.phrases.notWorkingHours.btnText
                 },
                 set: function (newValue) {
-                    this.$store.dispatch("w1ChangeNotWorkingHoursBtnText", newValue)
+                    this.$store.commit("w1/changeNotWorkingHoursBtnText", newValue)
                 }
             }
 
         },
         methods: {
             setTheme: function (theme) {
-                this.$store.dispatch("w1ChangeBgColor", theme.bgColor)
-                this.$store.dispatch("w1ChangeFontColor", theme.fontColor)
-                this.$store.dispatch("w1ChangeBtnBgColor", theme.btnBgColor)
-                this.$store.dispatch("w1ChangeBtnFontColor", theme.btnFontColor)
+                this.$store.commit("w1/changeBgColor", theme.bgColor);
+                this.$store.commit("w1/changeFontColor", theme.fontColor);
+                this.$store.commit("w1/changeBtnBgColor", theme.btnBgColor);
+                this.$store.commit("w1/changeBtnFontColor", theme.btnFontColor);
             },
             changeCurrentState(style) {
-                this.$store.dispatch("w1ChangeCurrentState", style);
+                this.$store.commit("w1/changeCurrentState", style)
             }
         }
     }

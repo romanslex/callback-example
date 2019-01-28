@@ -16,7 +16,7 @@
                         button.lmb_window-form-btn(:style='btnStyles') {{phrases.general.btnText}}
                     .lmb_window-eula
                         input.lmb_window-eula-check(type='checkbox', checked='checked')
-                        |                     Согласен с
+                        |  Согласен с
                         a политикой конфиденциальности
                 .lmb_on-exit(v-show="currentState === 'on-exit'")
                     .lmb_window-header
@@ -28,7 +28,7 @@
                         button.lmb_window-form-btn(:style='btnStyles') {{phrases.onExit.btnText}}
                     .lmb_window-eula
                         input.lmb_window-eula-check(type='checkbox', checked='checked')
-                        |                     Согласен с
+                        |  Согласен с
                         a политикой конфиденциальности
                 .lmb_after-sending(v-show="currentState === 'after-sending'")
                     .lmb_window-header(style='margin-bottom:0;')
@@ -43,12 +43,12 @@
                         button.lmb_window-form-btn(:style='btnStyles') {{phrases.notWorkingHours.btnText}}
                     .lmb_window-eula
                         input.lmb_window-eula-check(type='checkbox', checked='checked')
-                        |                     Согласен с
+                        |  Согласен с
                         a политикой конфиденциальности
             .lmb_footer
                 p
                     | Виджет предоставлен
-                    a(href='#') LeadMeBack.com
+                    a(href='#')  callback-example.roman.site
 
 </template>
 

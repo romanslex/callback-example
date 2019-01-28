@@ -90,7 +90,7 @@
                     return this.widget.overlayColor
                 },
                 set: function(newValue){
-                    this.$store.dispatch("w2ChangeOverlayColor", newValue)
+                    this.$store.commit("w2/changeOverlayColor", newValue)
                 }
             },
             btnBgColor: {
@@ -98,8 +98,8 @@
                     return this.widget.btnBgColor
                 },
                 set: function(newValue){
-                    this.btnShadowColor = this.$colorDarken(newValue, -30).string()
-                    this.$store.dispatch("w2ChangeBtnBgColor", newValue)
+                    this.btnShadowColor = this.$colorDarken(newValue, -30).string();
+                    this.$store.commit("w2/changeBtnBgColor", newValue);
                 }
             },
             btnShadowColor: {
@@ -107,7 +107,7 @@
                     return this.widget.btnShadowColor
                 },
                 set: function(newValue){
-                    this.$store.dispatch("w2ChangeBtnShadowColor", newValue)
+                    this.$store.commit("w2/changeBtnShadowColor", newValue)
                 }
             },
             mainColor: {
@@ -119,23 +119,18 @@
                 }
             },
 
-            phrases: {
-                get: function(){
-                    return this.widget.phrases
-                },
-                set: function(newValue){
-                    this.$store.dispatch("w2ChangePhrases", newValue)
-                }
+            phrases(){
+                return this.widget.phrases
             },
         },
         methods: {
             setTheme: function(theme){
-                this.$store.dispatch("w2ChangeOverlayColor", Color(theme.btnBgColor).alpha(0.4).string())
-                this.$store.dispatch("w2ChangeBtnBgColor", theme.btnBgColor)
-                this.$store.dispatch("w2ChangeBtnShadowColor", this.$colorDarken(theme.btnBgColor, -30).string())
+                this.$store.commit("w2/changeOverlayColor", Color(theme.btnBgColor).alpha(0.4).string());
+                this.$store.commit("w2/changeBtnBgColor", theme.btnBgColor);
+                this.$store.commit("w2/changeBtnShadowColor", this.$colorDarken(theme.btnBgColor, -30).string());
             },
             changeCurrentState(style){
-                this.$store.dispatch("w2ChangeCurrentState", style);
+                this.$store.commit("w2/changeCurrentState", style)
             }
         }
     }
