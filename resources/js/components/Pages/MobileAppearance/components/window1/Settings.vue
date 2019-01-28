@@ -123,7 +123,7 @@
                     return this.widget.bgColor
                 },
                 set: function(newValue){
-                    this.$store.dispatch("mw1ChangeBgColor", newValue)
+                    this.$store.commit("mw1/changeBgColor", newValue)
                 }
             },
             fontColor: {
@@ -131,7 +131,7 @@
                     return this.widget.fontColor
                 },
                 set: function(newValue){
-                    this.$store.dispatch("mw1ChangeFontColor", newValue)
+                    this.$store.commit("mw1/changeFontColor", newValue)
                 }
             },
             generalHeader: {
@@ -139,7 +139,7 @@
                     return this.widget.phrases.general.header
                 },
                 set: function(newValue){
-                    this.$store.dispatch("mw1ChangeGeneralHeader", newValue)
+                    this.$store.commit("mw1/changeGeneralHeader", newValue)
                 }
             },
             generalBtnText: {
@@ -147,7 +147,7 @@
                     return this.widget.phrases.general.btnText
                 },
                 set: function(newValue){
-                    this.$store.dispatch("mw1ChangeGeneralBtnText", newValue)
+                    this.$store.commit("mw1/changeGeneralBtnText", newValue)
                 }
             },
             afterSendingHeader: {
@@ -155,7 +155,7 @@
                     return this.widget.phrases.afterSending.header
                 },
                 set: function(newValue){
-                    this.$store.dispatch("mw1ChangeAfterSendingHeader", newValue)
+                    this.$store.commit("mw1/changeAfterSendingHeader", newValue)
                 }
             },
 
@@ -164,7 +164,7 @@
                     return this.widget.phrases.notWorkingHours.header
                 },
                 set: function(newValue){
-                    this.$store.dispatch("mw1ChangeNotWorkingHoursHeader", newValue)
+                    this.$store.commit("mw1/changeNotWorkingHoursHeader", newValue)
                 }
             },
             notWorkingHoursBtnText: {
@@ -172,17 +172,17 @@
                     return this.widget.phrases.notWorkingHours.btnText
                 },
                 set: function(newValue){
-                    this.$store.dispatch("mw1ChangeNotWorkingHoursBtnText", newValue)
+                    this.$store.commit("mw1/changeNotWorkingHoursBtnText", newValue)
                 }
             }
         },
         methods: {
             setTheme(theme){
-                this.$store.dispatch("mw1ChangeBgColor", theme.bgColor)
-                this.$store.dispatch("mw1ChangeFontColor", theme.fontColor)
+                this.$store.commit("mw1/changeBgColor", theme.bgColor)
+                this.$store.commit("mw1/changeFontColor", theme.fontColor)
             },
             changeCurrentState(state){
-                this.$store.dispatch("mw1ChangeCurrentState", state)
+                this.$store.commit("mw1/changeCurrentState", state)
             }
         }
     }

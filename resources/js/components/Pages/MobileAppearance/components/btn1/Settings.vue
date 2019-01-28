@@ -65,7 +65,7 @@
                     return this.widget.color
                 },
                 set: function(newValue){
-                    this.$store.dispatch("mb1ChangeColor", newValue)
+                    this.$store.commit("mb1/changeColor", newValue)
                 }
             },
             xPosition: {
@@ -73,7 +73,7 @@
                     return this.widget.xPosition
                 },
                 set: function(newValue){
-                    this.$store.dispatch("mb1ChangeXPosition", newValue)
+                    this.$store.commit("mb1/changeXPosition", newValue)
                 }
             },
             yPosition: {
@@ -81,13 +81,13 @@
                     return this.widget.yPosition
                 },
                 set: function(newValue){
-                    this.$store.dispatch("mb1ChangeYPosition", newValue)
+                    this.$store.commit("mb1/changeYPosition", newValue)
                 }
             }
         },
         methods: {
             setTheme(theme){
-                this.$store.dispatch("mb1ChangeColor", theme.color)
+                this.$store.commit("mb1/changeColor", theme.color)
             },
         }
     }
