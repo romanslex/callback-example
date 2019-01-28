@@ -19,6 +19,8 @@ Route::delete("/data/black-phones/{id}", "Data\AntispamController@deletePhone");
 
 Route::post("/data/feedback/send-comment", "Data\FeedbackController@sendComment");
 
+Route::get("home/window-appearance/{id}", "WindowAppearanceController@index");
+
 Route::get('/home{any}', 'SpaController@index')->where('any', '.*');
 
 Auth::routes();

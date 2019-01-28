@@ -26,5 +26,7 @@ class DatabaseSeeder extends Seeder
                     factory(\App\Models\Payment::class, 500)->make()
                 );
             });
+
+        (new WidgetDefaultSettingsSeeder())->run();
     }
 }
