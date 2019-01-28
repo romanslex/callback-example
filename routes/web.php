@@ -25,6 +25,10 @@ Route::put("home/window-appearance/{id}", "WindowAppearanceController@update");
 Route::get("home/btn-appearance/{id}", "BtnAppearanceController@index");
 Route::put("home/btn-appearance/{id}", "BtnAppearanceController@update");
 
+Route::get("home/mobile-appearance/{id}", "MobileAppearanceController@index");
+Route::put("home/mobile-appearance/btn/{id}", "MobileAppearanceController@updateBtn");
+Route::put("home/mobile-appearance/window/{id}", "MobileAppearanceController@updateWindow");
+
 Route::get('/home{any}', 'SpaController@index')->where('any', '.*');
 
 Auth::routes();

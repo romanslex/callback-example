@@ -6,7 +6,8 @@ module.exports = {
     entry: {
         "app": "./resources/js/app.js",
         "window-appearance": "./resources/js/components/Pages/WindowAppearance/index.js",
-        "btn-appearance": "./resources/js/components/Pages/BtnAppearance/index.js"
+        "btn-appearance": "./resources/js/components/Pages/BtnAppearance/index.js",
+        "mobile-appearance": "./resources/js/components/Pages/MobileAppearance/index.js"
     },
     output: {
         filename: "js/[name].js",
