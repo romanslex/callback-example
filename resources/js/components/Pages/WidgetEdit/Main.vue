@@ -88,7 +88,19 @@
             }
         },
         created: function(){
-            this.$store.dispatch("widgetEditPage/initWidgetData", this.widgetId);
+            if(!(this.widgetId in this.$store.state.widgetEditPage.settings))
+                window.axios
+                    .get("/data/widgets/" + this.widgetId)
+                    .then(response => {
+                        this.$store.commit("widgetEditPage/initWidgetData", response.data)
+                    })
+                    .catch(error => {
+                        switch (error.response.status) {
+                            case 404:
+                                this.$router.push("/home/widgets");
+                                break;
+                        }
+                    })
         }
     }
 </script>

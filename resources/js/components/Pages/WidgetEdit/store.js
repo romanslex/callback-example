@@ -81,15 +81,6 @@ const store = {
         },
     },
     actions: {
-        initWidgetData({commit, state}, widgetId){
-            if(!(widgetId in state.settings))
-                window.axios
-                .get("/data/widgets/" + widgetId)
-                    .then(response => {
-                        commit("initWidgetData", response.data)
-                    })
-                    .catch(error => console.log(error))
-        },
         toggleEmailNotify({commit}, payload){
             commit("toggleEmailNotify", payload)
         },
