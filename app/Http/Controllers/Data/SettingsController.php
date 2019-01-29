@@ -41,9 +41,9 @@ class SettingsController extends Controller
             ], 422);
         }
 
-        auth()->user()->fill([
-            "password" => Hash::make($validatedData["new_password"]),
-        ])->save();
+//        auth()->user()->fill([
+//            "password" => Hash::make($validatedData["new_password"]),
+//        ])->save();
         return [];
     }
 }

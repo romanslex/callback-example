@@ -108,7 +108,7 @@
                         new_password: this.newPassword,
                         new_password_confirmation: this.newPasswordConfirmation
                     })
-                    .then(response => this.$notifySuccess())
+                    .then(response => this.$notifySuccess("Будем считать, что пароль поменялся"))
                     .catch(error => {
                         this.$notifyDanger()
                         this.passErrors.current_password = error.response.data.errors.current_password || [];

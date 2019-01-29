@@ -34,7 +34,6 @@
         color: white
         background: #49af60
         padding: 15px
-        width: 350px
         font-size: 17px
         border-left: 3px solid #18722C
         box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.33)
