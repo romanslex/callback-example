@@ -29,7 +29,8 @@ Route::get("home/mobile-appearance/{id}", "MobileAppearanceController@index");
 Route::put("home/mobile-appearance/btn/{id}", "MobileAppearanceController@updateBtn");
 Route::put("home/mobile-appearance/window/{id}", "MobileAppearanceController@updateWindow");
 
-Route::put("home/settings", "Data\SettingsController@update");
+Route::put("data/settings", "Data\SettingsController@update");
+Route::put("data/settings/change-password", "Data\SettingsController@changePassword");
 
 Route::get('/home{any}', 'SpaController@index')->where('any', '.*');
 

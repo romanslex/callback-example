@@ -79,7 +79,7 @@
             saveProfileData: function(){
                 this.profileErrors.name = [];
                 window.axios
-                    .put("/home/settings", {
+                    .put("/data/settings", {
                         name: this.name,
                         phone: this.phone,
                         take_email_notifications: this.isEmailNotificationEnabled
@@ -102,7 +102,7 @@
             changePassword: function(){
                 this.passErrors.new_password = [];
                 this.passErrors.current_password = [];
-                axios
+                window.axios
                     .put("/data/settings/change-password", {
                         current_password: this.currentPassword,
                         new_password: this.newPassword,

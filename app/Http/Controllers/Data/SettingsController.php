@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Data;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class SettingsController extends Controller
 {
@@ -24,6 +25,25 @@ class SettingsController extends Controller
             collect($validatedData)->only(['name', 'phone', 'take_email_notifications'])
                 ->toArray()
         );
+        return [];
+    }
+
+    public function changePassword(Request $request)
+    {
+        $validatedData = $request->validate([
+            "current_password" => "required|string|min:6",
+            'new_password' => 'required|string|min:6|confirmed',
+        ]);
+
+        if (!Hash::check($validatedData["current_password"], auth()->user()->getAuthPassword())) {
+            return response([
+                "errors" => ["current_password" => ["Неверный текущий пароль"]]
+            ], 422);
+        }
+
+        auth()->user()->fill([
+            "password" => Hash::make($validatedData["new_password"]),
+        ])->save();
         return [];
     }
 }
