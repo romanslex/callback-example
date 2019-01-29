@@ -45,11 +45,6 @@
                         input.lmb_window-eula-check(type='checkbox', checked='checked')
                         |  Согласен с
                         a политикой конфиденциальности
-            .lmb_footer
-                p
-                    | Виджет предоставлен
-                    a(href='#')  callback-example.roman.site
-
 </template>
 
 <script>
@@ -117,6 +112,7 @@
         text-align right
     .lmb_window-container
         padding 50px
+        padding-bottom: 80px
     .lmb_window-header
         text-align center
         font-size 29px
