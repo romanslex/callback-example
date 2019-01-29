@@ -25,7 +25,8 @@
                 router-link(to="/home/settings" tag="li"): a
                     i.fas.fa-cog
                     | Настройки
-                router-link(to="/home/logout" tag="li"): a
+                <!--router-link(to="/home/logout" tag="li"): a-->
+                li(@click="logout"): a
                     i.fas.fa-power-off
                     | Выйти
 
@@ -45,11 +46,11 @@
         },
         computed: {
             user(){
-                console.log(this.$store.state.user)
+                console.log(this.$store.state.user);
                 return this.$store.state.user
             },
             formattedBalance(){
-                var remainder = this.user.total.length % 3;
+                let remainder = this.user.total.length % 3;
                 return (this.user.total.substr(0, remainder) + this.user.total.substr(remainder).replace(/(\d{3})/g, ' $1')).trim();
             }
         },
@@ -59,6 +60,12 @@
             },
             hide: function(){
                 this.isWindowOpen = false;
+            },
+            logout(){
+                window.axios
+                    .post("/logout")
+                    .then(response => console.log(response))
+                    .catch(error => console.log(error))
             }
         }
     }
