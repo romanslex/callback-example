@@ -50,8 +50,8 @@
                 return this.$store.state.user
             },
             formattedBalance(){
-                let remainder = this.user.total.length % 3;
-                return (this.user.total.substr(0, remainder) + this.user.total.substr(remainder).replace(/(\d{3})/g, ' $1')).trim();
+                let remainder = this.user.total.toString().length % 3;
+                return (this.user.total.toString().substr(0, remainder) + this.user.total.toString().substr(remainder).replace(/(\d{3})/g, ' $1')).trim();
             }
         },
         methods: {

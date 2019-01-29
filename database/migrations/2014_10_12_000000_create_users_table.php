@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string("phone")->nullable();
             $table->boolean("take_email_notifications")->default(true);
-            $table->decimal("total")->default(0);
+            $table->decimal("total", 10, 2)->default(0);
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

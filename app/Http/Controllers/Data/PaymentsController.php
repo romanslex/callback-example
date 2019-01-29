@@ -38,4 +38,21 @@ class PaymentsController extends Controller
                 ];
             });
     }
+
+    public function replenish(Request $request)
+    {
+        $validatedData = $request->validate([
+            "replenish" => "required|numeric",
+        ]);
+
+        auth()->user()->payments()->create([
+            "info" => "Пополнение баланса",
+            "sum" => $validatedData["replenish"],
+            "is_replenishment" => true,
+            "performed_at" => now()
+        ]);
+        auth()->user()->total += $validatedData["replenish"];
+        auth()->user()->save();
+        return [ "total" => auth()->user()->total ];
+    }
 }

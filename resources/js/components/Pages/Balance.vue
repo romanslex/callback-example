@@ -3,8 +3,8 @@
         h3 Пополнить баланс
         h5(style="font-weight:300") Введите сумму, которую Вы хотите положить на баланс, затем нажмите кнопку "Пополнить". Вы перейдете в настройки оплаты.
         #payment-block(style="margin-top:10px")
-            input(type="text")
-            button.btn Пополнить
+            input(type="text" v-model="replenishAmount" style="text-align:right;font-size:15px;")
+            button.btn(@click="replenish") Пополнить
 
         h3(style="margin-top: 20px") Таблица платежей
         #filter-block
@@ -20,7 +20,7 @@
                 .th Дата
                 .th Информация
                 .th Сайт
-                .th Сумма, руб.
+                .th(style="text-align:right") Сумма, руб.
             .tr(v-for="payment in resultPayments" :key="payment.id")
                 .td {{payment.date}}
                 .td(v-if="payment.isReplenishment")
@@ -52,7 +52,8 @@
                 time: "",
                 menu: [true, false, false, false, false],
                 resultPayments: [],
-                payments: []
+                payments: [],
+                replenishAmount: 1000
             }
         },
         created: function(){
@@ -65,6 +66,14 @@
             },
             toggleActiveBtn: function(active){
                 this.menu = this.menu.map((item, index) => index === active);
+            },
+            replenish(){
+                window.axios
+                    .post("/data/payments", { replenish: this.replenishAmount })
+                    .then(response => {
+                        this.$store.commit("updateTotal", response.data.total);
+                    })
+                    .catch(error => console.log(error))
             },
             getData: function(val){
                 this.toggleActiveBtn(val);
@@ -190,9 +199,6 @@
         border-bottom: solid 1px #f2f3f3
         font-size: 13px
         font-weight: 400
-
-    .th
-        text-align: center
 
     .tr
         display: grid

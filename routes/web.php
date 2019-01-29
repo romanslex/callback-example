@@ -10,6 +10,7 @@ Route::delete("/data/widgets/{id}", "Data\WidgetsController@destroy");
 Route::post("/data/widgets/send-manual/{id}", "Data\WidgetsController@sendManual");
 
 Route::get("/data/payments", "Data\PaymentsController@index");
+Route::post("/data/payments", "Data\PaymentsController@replenish");
 
 Route::post("/data/black-ip", "Data\AntispamController@storeIp");
 Route::delete("/data/black-ip/{id}", "Data\AntispamController@deleteIp");

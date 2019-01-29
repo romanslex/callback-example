@@ -18,7 +18,7 @@ class CreatePaymentsTable extends Migration
             $table->integer("user_id")->unsigned();
             $table->string("info");
             $table->string("site")->nullable();
-            $table->decimal("sum");
+            $table->decimal("sum", 10, 2);
             $table->boolean("is_replenishment");
             $table->timestamp("performed_at");
             $table->timestamps();

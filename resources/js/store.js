@@ -37,6 +37,9 @@ const store = new Vuex.Store({
             state.user.email = user.email;
             state.user.phone = user.phone;
             state.user.isEmailNotificationEnabled = user.isEmailNotificationEnabled;
+        },
+        updateTotal(state, amount){
+            state.user.total = amount;
         }
     },
     actions: {
