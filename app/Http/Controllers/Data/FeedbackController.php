@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Mail;
 
 class FeedbackController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function SendComment(Request $request)
     {
         $validatedData = $request->validate([

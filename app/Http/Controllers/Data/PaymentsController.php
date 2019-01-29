@@ -7,6 +7,11 @@ use App\Http\Controllers\Controller;
 
 class PaymentsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(Request $request)
     {
         $validatedData = $request->validate([
