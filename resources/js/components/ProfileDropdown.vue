@@ -64,7 +64,7 @@
             logout(){
                 window.axios
                     .post("/logout")
-                    .then(response => console.log(response))
+                    .then(response => location.reload())
                     .catch(error => console.log(error))
             }
         }
