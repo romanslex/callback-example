@@ -42,7 +42,7 @@ class PaymentsController extends Controller
     public function replenish(Request $request)
     {
         $validatedData = $request->validate([
-            "replenish" => "required|numeric",
+            "replenish" => "required|numeric|min:100|max:100000",
         ]);
 
         auth()->user()->payments()->create([

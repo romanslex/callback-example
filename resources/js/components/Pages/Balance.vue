@@ -1,7 +1,9 @@
 <template lang="pug">
     #payments-content
         h3 Пополнить баланс
-        h5(style="font-weight:300") Введите сумму, которую Вы хотите положить на баланс, затем нажмите кнопку "Пополнить". Вы перейдете в настройки оплаты.
+        h5(style="font-weight:300")
+            | Введите сумму, которую Вы хотите положить на баланс, затем нажмите кнопку "Пополнить".
+            | Вы перейдете в настройки оплаты. <br> (мин. значение - 100руб., макс. значение - 100.000руб.)
         #payment-block(style="margin-top:10px")
             input(type="text" v-model="replenishAmount" style="text-align:right;font-size:15px;")
             button.btn(@click="replenish") Пополнить
@@ -72,8 +74,11 @@
                     .post("/data/payments", { replenish: this.replenishAmount })
                     .then(response => {
                         this.$store.commit("updateTotal", response.data.total);
+                        this.$notifySuccess("Баланс поплнен");
                     })
-                    .catch(error => console.log(error))
+                    .catch(error => {
+                        this.$notifyDanger("Произошла ошибка")
+                    })
             },
             getData: function(val){
                 this.toggleActiveBtn(val);
