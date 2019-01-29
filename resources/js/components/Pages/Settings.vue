@@ -84,7 +84,16 @@
                         phone: this.phone,
                         take_email_notifications: this.isEmailNotificationEnabled
                     })
-                    .then(response => this.$notifySuccess())
+                    .then(response => {
+                        this.$notifySuccess();
+                        this.$store.commit("updateUserSettings", {
+                            name: this.name,
+                            email: this.email,
+                            phone: this.phone,
+                            isEmailNotificationEnabled: this.isEmailNotificationEnabled
+                        });
+                        console.log(this.$store.state.user)
+                    })
                     .catch(error => {
                         this.profileErrors = error.response.data.errors;
                         this.$notifyDanger()

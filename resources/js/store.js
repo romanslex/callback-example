@@ -20,6 +20,7 @@ const store = new Vuex.Store({
             name: "",
             email: "",
             total: "",
+            phone: "",
             isEmailNotificationEnabled: ""
         }
     },
@@ -28,6 +29,13 @@ const store = new Vuex.Store({
             state.user.name = user.name;
             state.user.email = user.email;
             state.user.total = user.total;
+            state.user.phone = user.phone;
+            state.user.isEmailNotificationEnabled = user.isEmailNotificationEnabled;
+        },
+        updateUserSettings(state, user){
+            state.user.name = user.name;
+            state.user.email = user.email;
+            state.user.phone = user.phone;
             state.user.isEmailNotificationEnabled = user.isEmailNotificationEnabled;
         }
     },

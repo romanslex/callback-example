@@ -15,6 +15,7 @@ class SpaController extends Controller
     {
         $user = [
             "name" => auth()->user()->name,
+            "phone" => auth()->user()->phone,
             "email" => auth()->user()->email,
             "total" => auth()->user()->total,
             "isEmailNotificationEnabled" => auth()->user()->take_email_notifications
