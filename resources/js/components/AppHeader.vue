@@ -25,7 +25,7 @@
         width: 940px
         margin: 0 auto
         display: grid
-        grid-template-columns: 1fr 200px
+        grid-template-columns: 1fr auto
 
     #header_tagline
         font-size: 14

@@ -7,7 +7,7 @@
         #profile_bar-avatar
             i.fas.fa-user-circle
         #profile_bar-name
-            | {{user.name | truncate(50)}}
+            | {{user.name | truncate(40)}}
         #profile_bar-email
             | {{user.email | truncate(30)}}
         #profile_balance
@@ -170,5 +170,5 @@
                 i
                     color: #666666
                     font-size: 11px
-                    margin-right: 5px
+                    margin-right: 10px
 </style>

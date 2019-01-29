@@ -73,11 +73,12 @@
                 this.name = this.user.name;
                 this.email = this.user.email;
                 this.phone = this.user.phone;
-                this.isEmailNotificationEnabled = this.user.take_email_notifications;
+                this.isEmailNotificationEnabled = this.user.isEmailNotificationEnabled;
+                console.log(this.user)
             },
             saveProfileData: function(){
                 this.profileErrors.name = [];
-                axios
+                window.axios
                     .put("/home/settings", {
                         name: this.name,
                         phone: this.phone,

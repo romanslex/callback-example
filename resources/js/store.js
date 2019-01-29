@@ -19,7 +19,8 @@ const store = new Vuex.Store({
         user: {
             name: "",
             email: "",
-            total: ""
+            total: "",
+            isEmailNotificationEnabled: ""
         }
     },
     mutations: {
@@ -27,6 +28,7 @@ const store = new Vuex.Store({
             state.user.name = user.name;
             state.user.email = user.email;
             state.user.total = user.total;
+            state.user.isEmailNotificationEnabled = user.isEmailNotificationEnabled;
         }
     },
     actions: {
