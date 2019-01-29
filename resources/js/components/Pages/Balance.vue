@@ -57,6 +57,7 @@
         },
         created: function(){
             this.resultPayments = this.transformPayments(this.payments);
+            this.getData(0)
         },
         methods: {
             onChange: function(){
@@ -70,7 +71,7 @@
                 let date = this.getDate(val);
                 this.isLoaderDisplayed = true;
                 this.resultPayments = [];
-                axios
+                window.axios
                     .get("/data/payments", {params: date})
                     .then(response => {
                         this.resultPayments = this.transformPayments(response.data);
@@ -79,7 +80,7 @@
                     .catch(error => {
                         console.log(error);
                         this.isLoaderDisplayed = false;
-                    })
+                    });
                 console.log(date);
             },
             getDate: function(val){
@@ -88,27 +89,27 @@
                         return {
                             s: moment().format("DD.MM.YYYY"),
                             e: moment().format("DD.MM.YYYY")
-                        }
+                        };
                     case 1:
                         return {
                             s: moment(new Date()).subtract(1, "days").format("DD.MM.YYYY"),
                             e: moment(new Date()).subtract(1, "days").format("DD.MM.YYYY")
-                        }
+                        };
                     case 2:
                         return {
                             s: moment(new Date()).subtract(7, "days").format("DD.MM.YYYY"),
                             e: moment(new Date()).format("DD.MM.YYYY")
-                        }
+                        };
                     case 3:
                         return {
                             s: moment(new Date()).subtract(1, "month").format("DD.MM.YYYY"),
                             e: moment(new Date()).format("DD.MM.YYYY")
-                        }
+                        };
                     case 4:
                         return {
                             s: moment(new Date()).subtract(3, "month").format("DD.MM.YYYY"),
                             e: moment(new Date()).format("DD.MM.YYYY")
-                        }
+                        };
                     case 5:
                         return {
                             s: moment(this.time[0]).format("DD.MM.YYYY"),
