@@ -25,6 +25,8 @@ const router = new VueRouter({
         { path: '/home/settings', component: Settings },
 
         { path: '/home/widgets/:id/edit', component: WidgetEdit },
+
+        { path: "/home/*", redirect: "/home/orders" }
     ]
 });
 
