@@ -2,8 +2,8 @@
     div
         .add-email(v-for="(email, index) in emails" :key="index")
             input.email(v-model="email.value" type="text" placeholder="email@example.com" :disabled="!isEmailNotifyEnabled")
-            i.far.fa-times-circle.del-email(@click="remove(index)" :class="{'disabled': !isEmailNotifyEnabled}" v-if="index != 0")
-            .fake-del-email(v-if="index == 0")
+            i.far.fa-times-circle.del-email(@click="remove(index)" :class="{'disabled': !isEmailNotifyEnabled}" v-if="index !== 0")
+            .fake-del-email(v-if="index === 0")
         .add-email-btn(@click="addEmail" :class="{'disabled': !isEmailNotifyEnabled}")
             i.fal.fa-plus-circle(style="font-size: 20px")
             span Добавить email
@@ -18,11 +18,11 @@
         methods: {
             addEmail: function(){
                 if(!this.isEmailNotifyEnabled) return;
-                this.$store.dispatch("widgetEditPage/addEmail", this.widgetId);
+                this.$store.commit("widgetEditPage/addEmail", this.widgetId);
             },
             remove: function(index){
                 if(!this.isEmailNotifyEnabled) return;
-                this.$store.dispatch("widgetEditPage/removeEmail", {widgetId: this.widgetId, value: index});
+                this.$store.commit("widgetEditPage/removeEmail", {widgetId: this.widgetId, value: index});
             }
         },
         computed: {
@@ -41,7 +41,7 @@
         },
         created: function(){
             if(this.emails.length === 0)
-                this.$store.dispatch("addEmail", this.widgetId);
+                this.$store.commit("widgetEditPage/addEmail", this.widgetId);
         }
     }
 </script>

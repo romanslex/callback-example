@@ -22,11 +22,11 @@
         methods: {
             addPhone: function(){
                 if(!this.isSmsNotifyEnabled) return;
-                this.$store.dispatch("widgetEditPage/addPhone", this.widgetId);
+                this.$store.commit("widgetEditPage/addPhone", this.widgetId);
             },
             remove: function(index){
                 if(!this.isSmsNotifyEnabled) return;
-                this.$store.dispatch("widgetEditPage/removePhone", {widgetId: this.widgetId, value: index});
+                this.$store.commit("widgetEditPage/removePhone", {widgetId: this.widgetId, value: index});
             }
         },
         computed: {
@@ -45,7 +45,7 @@
         },
         created: function(){
             if(this.phones.length === 0)
-                this.$store.dispatch("widgetEditPage/addPhone", this.widgetId);
+                this.$store.commit("widgetEditPage/addPhone", this.widgetId);
         }
     }
 </script>

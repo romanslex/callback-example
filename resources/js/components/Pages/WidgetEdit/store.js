@@ -1,4 +1,3 @@
-import Vue from "vue"
 const store = {
     namespaced: true,
     string: true,
@@ -86,20 +85,6 @@ const store = {
         },
         toggleSmsNotify({commit}, payload){
             commit("toggleSmsNotify", payload)
-        },
-
-        addEmail({commit}, widgetId){
-            commit("addEmail", widgetId)
-        },
-        removeEmail({commit}, payload){
-            commit("removeEmail", payload)
-        },
-
-        addPhone({commit}, widgetId){
-            commit("addPhone", widgetId)
-        },
-        removePhone({commit}, payload){
-            commit("removePhone", payload)
         },
 
         setTimezone({commit}, payload){
