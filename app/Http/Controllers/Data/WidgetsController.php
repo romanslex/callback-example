@@ -23,6 +23,7 @@ class WidgetsController extends Controller
             ->user()
             ->widgets()
             ->orderBy("created_at")
+            ->orderBy("url")
             ->get()
             ->map(function ($widget) {
                 return [
@@ -138,5 +139,22 @@ class WidgetsController extends Controller
 //        Mail::to($validatedData["email"])
 //            ->send(new WidgetManual($widget));
         return [];
+    }
+
+    public function extend(Request $request, $id)
+    {
+        $this->validate($request, [
+            "rate" => 'digits_between:0,4'
+        ]);
+
+        $widget = auth()->user()->widgets()->findOrFail($id);
+        $rate = $request->get("rate");
+
+        $widget->extend($rate);
+
+        return [
+            "total" => auth()->user()->refresh()->total,
+            "widgets" => $this->getWidgets()
+        ];
     }
 }

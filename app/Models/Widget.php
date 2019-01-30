@@ -174,8 +174,9 @@ class Widget extends Model
     public static function getRateExpiredAt($url)
     {
         $widget = Widget::where("url", $url)->first();
-        if(!$widget)
+        if (!$widget) {
             return Carbon::today()->addDays(7);
+        }
         return $widget->rate_expired_at;
     }
 
@@ -193,5 +194,23 @@ class Widget extends Model
                 group by x.date
                 order by x.date desc", [$this->id]);
         return collect($lastOrders)->pluck("amount")->toArray();
+    }
+
+    public static $rates = [
+        ["interval" => 1, "price" => "300"],
+        ["interval" => 3, "price" => "855"],
+        ["interval" => 6, "price" => "1620"],
+        ["interval" => 12, "price" => "2400"],
+        ["interval" => 24, "price" => "4160"],
+    ];
+
+    public function extend($rate)
+    {
+        if($this->owner->total < self::$rates[$rate]['price'])
+            abort(400, "Не хватает денег на балансе");
+        $this->owner->total -= self::$rates[$rate]['price'];
+        $this->owner->save();
+        $this->rate_expired_at = $this->rate_expired_at->addMonths(self::$rates[$rate]['interval']);
+        $this->save();
     }
 }

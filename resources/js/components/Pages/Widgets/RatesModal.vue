@@ -22,7 +22,7 @@
                                 li Фирменное оформление
                                 li Интеграция с системами аналитики
                     .c-footer
-                        a.choose-btn.one-btn Выбрать
+                        a.choose-btn.one-btn(@click="extend(0)") Выбрать
 
                 .card.two
                     .c-body
@@ -37,7 +37,7 @@
                                 li Фирменное оформление
                                 li Интеграция с системами аналитики
                     .c-footer
-                        a.choose-btn.two-btn Выбрать
+                        a.choose-btn.two-btn(@click="extend(1)") Выбрать
 
                 .card.three
                     .c-body
@@ -52,7 +52,7 @@
                                 li Фирменное оформление
                                 li Интеграция с системами аналитики
                     .c-footer
-                        a.choose-btn.three-btn Выбрать
+                        a.choose-btn.three-btn(@click="extend(2)") Выбрать
 
                 .card.four
                     .c-body
@@ -67,7 +67,7 @@
                                 li Фирменное оформление
                                 li Интеграция с системами аналитики
                     .c-footer
-                        a.choose-btn.four-btn Выбрать
+                        a.choose-btn.four-btn(@click="extend(3)") Выбрать
 
                 .card.five
                     .c-body
@@ -82,7 +82,7 @@
                                 li Фирменное оформление
                                 li Интеграция с системами аналитики
                     .c-footer
-                        a.choose-btn.five-btn Выбрать
+                        a.choose-btn.five-btn(@click="extend(4)") Выбрать
 
 </template>
 
@@ -91,7 +91,14 @@
         props: ["wid"],
         data: function(){
             return {
-                isModalVisible: false
+                isModalVisible: false,
+                rates: [
+                    {interval: 1, price: 300},
+                    {interval: 3, price: 855},
+                    {interval: 6, price: 1620},
+                    {interval: 12, price: 2400},
+                    {interval: 24, price: 4160},
+                ]
             }
         },
         methods: {
@@ -104,6 +111,24 @@
             },
             redirect: function(){
                 window.location.href = "/";
+            },
+            extend(val){
+                if(this.user.total >= this.rates[val].price){
+                    window.axios
+                        .post("/data/widgets/" + this.wid + "/extend", { rate: val})
+                        .then(response => {
+                            this.isModalVisible = false;
+                            this.$store.commit("updateTotal", response.data.total);
+                            this.$store.commit("widgetsPage/setWidgets", response.data.widgets);
+                        })
+                        .catch(error => console.log(error))
+                }else
+                    this.$router.push("/home/balance")
+            }
+        },
+        computed: {
+            user(){
+                return this.$store.state.user
             }
         }
     }
