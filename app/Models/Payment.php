@@ -31,4 +31,16 @@ class Payment extends Model
             ->whereDate("performed_at", ">=", Carbon::createFromFormat("d.m.Y", $start)->toDateString())
             ->whereDate("performed_at", "<=", Carbon::createFromFormat("d.m.Y", $end)->toDateString());
     }
+
+    public static function createExtendPayment(Widget $widget, $sum)
+    {
+        return self::create([
+            "user_id" => $widget->owner->id,
+            "info" => "Продление тарифа",
+            "site" => $widget->url,
+            "sum" => $sum,
+            "is_replenishment" => false,
+            "performed_at" => now()
+        ]);
+    }
 }

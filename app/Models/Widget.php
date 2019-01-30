@@ -211,6 +211,7 @@ class Widget extends Model
         $this->owner->total -= self::$rates[$rate]['price'];
         $this->owner->save();
         $this->rate_expired_at = $this->rate_expired_at->addMonths(self::$rates[$rate]['interval']);
+        Payment::createExtendPayment($this, self::$rates[$rate]['price']);
         $this->save();
     }
 }
