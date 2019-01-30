@@ -33,9 +33,9 @@
                 h2 Нерабочее время
                 p Вы можете отдельно настроить виджет на показ в нерабочее время, с предупреждением об этом клиента.
                 p Для этого перейдите на вкладку "Настройки показа" и поставьте галочку напротив "Показывать виджет в нерабочее время"
-                div: img(src="./img/schedule-help/1.png" style="width: 341px")
+                div(style="margin-bottom:10px"): img(src="./img/schedule-help/1.jpg" style="width: 341px")
                 p В настройках окна вы можете настроить соответсвующий текст
-                div: img(src="./img/schedule-help/2.png" style="width: 341px")
+                div: img(src="./img/schedule-help/2.jpg" style="width: 341px")
         h4.h4 Утвердите график работы вашего отдела продаж
         #sb
             div(style="margin: 16px 0")
