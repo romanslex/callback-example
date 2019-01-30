@@ -182,17 +182,16 @@ class Widget extends Model
     public function lastOrders()
     {
         $lastOrders = \DB::select("
-            with recursive x as (
-                select cast(now() as date) as date
-                union all
-                select cast(x.date - interval '1 day' as date) from x
-                where cast(x.date - interval '1 day' as date) >= cast(now() - interval '15 day' as date)
-            )
-            select x.date, coalesce(count(o.*), 0) as amount
-            from x left join orders o on cast(o.created_at as date) = x.date
-            where widget_id = ? or widget_id is null
-            group by x.date
-            order by x.date desc", [$this->id]);
+                with recursive x as (
+                    select cast(now() as date) as date
+                    union all
+                    select cast(x.date - interval '1 day' as date) from x
+                    where cast(x.date - interval '1 day' as date) >= cast(now() - interval '15 day' as date)
+                )
+                select x.date, coalesce(count(o.*), 0) amount
+                from x left join orders o on x.date = cast(o.created_at as date) and o.widget_id = ?
+                group by x.date
+                order by x.date desc", [$this->id]);
         return collect($lastOrders)->pluck("amount")->toArray();
     }
 }
