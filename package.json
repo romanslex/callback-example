@@ -1,7 +1,8 @@
 {
     "private": true,
     "scripts": {
-        "watch": "npx webpack --config webpack.dev.js --watch"
+        "watch": "npx webpack --config webpack.dev.js --watch",
+        "prod": "./node_modules/.bin/gulp prod"
     },
     "devDependencies": {
         "axios": "^0.18",

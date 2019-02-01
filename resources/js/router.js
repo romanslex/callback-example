@@ -15,19 +15,24 @@ const router = new VueRouter({
     mode: "history",
     routes: [
         { path: "/home", redirect: "/home/orders" },
-        { path: '/home/orders', component: Orders },
-        { path: '/home/widgets', component: Widgets },
-        { path: '/home/faq', component: Faq },
-        { path: '/home/antispam', component: Antispam },
-        { path: '/home/feedback', component: Feedback },
+        { path: '/home/orders', component: Orders, meta: { title: "Заявки | CallBackService" } },
+        { path: '/home/widgets', component: Widgets, meta: { title: "Виджеты | CallBackService" } },
+        { path: '/home/faq', component: Faq, meta: { title: "F.A.Q. | CallBackService" } },
+        { path: '/home/antispam', component: Antispam, meta: { title: "Антиспам | CallBackService" } },
+        { path: '/home/feedback', component: Feedback, meta: { title: "Обратная связь | CallBackService" } },
 
-        { path: '/home/balance', component: Balance },
-        { path: '/home/settings', component: Settings },
+        { path: '/home/balance', component: Balance, meta: { title: "Баланс | CallBackService" } },
+        { path: '/home/settings', component: Settings, meta: { title: "Настройки | CallBackService" } },
 
-        { path: '/home/widgets/:id/edit', component: WidgetEdit },
+        { path: '/home/widgets/:id/edit', component: WidgetEdit, meta: { title: "Редактирование виджета | CallBackService" } },
 
         { path: "/home/*", redirect: "/home/orders" }
     ]
+});
+
+router.beforeEach((to, from, next) => {
+    document.title = to.meta.title;
+    next()
 });
 
 export default router;
