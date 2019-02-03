@@ -183,14 +183,17 @@ class Widget extends Model
     public function lastOrders()
     {
         $lastOrders = \DB::select("
-                with recursive x as (
-                    select cast(now() as date) as date
-                    union all
-                    select cast(x.date - interval '1 day' as date) from x
-                    where cast(x.date - interval '1 day' as date) >= cast(now() - interval '15 day' as date)
-                )
-                select x.date, coalesce(count(o.*), 0) amount
-                from x left join orders o on x.date = cast(o.created_at as date) and o.widget_id = ?
+                select x.date, ifnull(count(o.created_at), 0) amount
+                from (
+                      select cast(now() as date)  date union all select cast(now() - interval 1 day as date)  date union all
+                      select cast(now() - interval 2 day as date)  date union all select cast(now() - interval 3 day as date)  date union all
+                      select cast(now() - interval 4 day as date)  date union all select cast(now() - interval 5 day as date)  date union all
+                      select cast(now() - interval 6 day as date)  date union all select cast(now() - interval 7 day as date)  date union all
+                      select cast(now() - interval 8 day as date)  date union all select cast(now() - interval 9 day as date)  date union all
+                      select cast(now() - interval 10 day as date)  date union all select cast(now() - interval 11 day as date)  date union all
+                      select cast(now() - interval 12 day as date)  date union all select cast(now() - interval 13 day as date)  date union all
+                      select cast(now() - interval 14 day as date)  date union all select cast(now() - interval 15 day as date)  date
+                ) x join orders o on x.date = cast(o.created_at as date) and o.widget_id = ?
                 group by x.date
                 order by x.date desc", [$this->id]);
         return collect($lastOrders)->pluck("amount")->toArray();
