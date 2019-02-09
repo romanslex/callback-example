@@ -18,6 +18,8 @@
 <style lang="stylus">
     #menu-block
         background: rgb(17, 93, 142)
+        @media(max-width: 639px)
+            display none
     #menu
         margin: 0 auto
         @media(min-width: 940px)
