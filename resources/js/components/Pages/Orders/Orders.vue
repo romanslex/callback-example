@@ -258,6 +258,12 @@
             color: white
 
     #orders-content
+        @media(max-width: 646px)
+            >>> .mx-calendar
+                float: none
+            >>> .mx-range-wrapper
+                width: initial
+
         >>> .mx-input
             border-radius: 0 !important
             height: 36px !important
