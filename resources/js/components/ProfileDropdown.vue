@@ -88,6 +88,9 @@
         &.hover
             background-color: #f5f5f5
 
+        @media(max-width: 600px)
+            display none
+
     #profile_bar-avatar
         grid-area: img
         i

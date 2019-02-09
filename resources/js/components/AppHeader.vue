@@ -22,10 +22,11 @@
 
 <style scoped lang="stylus">
     #header
-        width: 940px
         margin: 0 auto
         display: grid
         grid-template-columns: 1fr auto
+        @media(min-width: 940px)
+            width 940px
 
     #header_tagline
         font-size: 14

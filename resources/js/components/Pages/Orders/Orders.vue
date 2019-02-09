@@ -227,9 +227,10 @@
 
 <style scoped lang="stylus">
     #orders-content
-        width: 940px
         margin: 0 auto
         padding-top: 20px
+        @media(min-width: 940px)
+            width 940px
 
     #filter-block
         margin-top: 10px

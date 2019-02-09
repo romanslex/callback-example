@@ -19,8 +19,9 @@
     #menu-block
         background: rgb(17, 93, 142)
     #menu
-        width: 940px
         margin: 0 auto
+        @media(min-width: 940px)
+            width 940px
 
         ul
             list-style-type: none
