@@ -229,8 +229,10 @@
     #orders-content
         margin: 0 auto
         padding-top: 20px
-        @media(min-width: 940px)
+        @media(min-width: 961px)
             width 940px
+        @media(max-width: 960px)
+            padding 20px 10px 0 10px
 
     #filter-block
         margin-top: 10px

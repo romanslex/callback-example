@@ -28,12 +28,14 @@
         margin: 0 auto
         display: grid
         grid-template-columns: 1fr auto
-        @media(min-width: 940px)
+        @media(min-width: 961px)
             width 940px
         @media(max-width: 639px)
             padding 0 10px
             grid-template-columns auto 1fr
             grid-template-areas "mobile-menu logo"
+        @media(max-width: 960px)
+            padding 0 10px
 
     #header_tagline
         font-size: 14

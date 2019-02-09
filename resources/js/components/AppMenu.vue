@@ -22,8 +22,10 @@
             display none
     #menu
         margin: 0 auto
-        @media(min-width: 940px)
+        @media(min-width: 961px)
             width 940px
+        @media(max-width: 960px)
+            padding 0 10px
 
         ul
             list-style-type: none
