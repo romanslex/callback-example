@@ -281,6 +281,8 @@
         margin-top: 20px
         margin-bottom: 5px
         height: 527px
+        overflow-x auto
+        overflow-y hidden
 
         &.table-bottom-border
             border-bottom: solid 1px #f2f3f3
@@ -293,7 +295,7 @@
         text-align: center
     .tr
         display: grid
-        grid-template-columns: 150px 1fr 200px 90px
+        grid-template-columns: 150px minmax(150px, 1fr) 200px 90px
         padding: 5px 0
     .td
         font-size: 13px
