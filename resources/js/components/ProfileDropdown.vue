@@ -88,7 +88,7 @@
         &.hover
             background-color: #f5f5f5
 
-        @media(max-width: 639px)
+        @media(max-width: 646px)
             display none
 
     #profile_bar-avatar

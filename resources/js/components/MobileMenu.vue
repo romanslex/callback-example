@@ -23,7 +23,7 @@
 <style lang="stylus" scoped>
     #menu-mobile
         display flex
-        @media(min-width: 640px)
+        @media(min-width: 647px)
             display none
     #menu-mobile-btn
         font-size 29px

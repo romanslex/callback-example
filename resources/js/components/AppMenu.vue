@@ -15,22 +15,22 @@
     }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
     #menu-block
         background: rgb(17, 93, 142)
-        @media(max-width: 639px)
+        @media(max-width: 646px)
             display none
     #menu
         margin: 0 auto
         @media(min-width: 961px)
             width 940px
-        @media(max-width: 960px)
-            padding 0 10px
 
         ul
             list-style-type: none
             display: grid
             grid-template-columns: max-content max-content max-content max-content max-content auto
+            @media(max-width: 960px)
+                padding 0 10px
 
             li.item
                 align-self: center

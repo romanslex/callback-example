@@ -40,4 +40,9 @@
 <style lang="stylus">
     h1, h2, h3
         font-weight: 400
+    #app
+        display flex
+        flex-direction column
+    footer
+        height 25px
 </style>

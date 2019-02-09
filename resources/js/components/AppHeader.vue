@@ -27,10 +27,12 @@
     #header
         margin: 0 auto
         display: grid
-        grid-template-columns: 1fr auto
+        grid-template-columns 1fr auto
+        justify-content space-between
+        width 100%
         @media(min-width: 961px)
             width 940px
-        @media(max-width: 639px)
+        @media(max-width: 646px)
             padding 0 10px
             grid-template-columns auto 1fr
             grid-template-areas "mobile-menu logo"
@@ -42,7 +44,7 @@
 
     #header_logo_bar
         padding: 5px 0
-        @media(max-width: 639px)
+        @media(max-width: 646px)
             text-align right
             grid-area logo
             h1

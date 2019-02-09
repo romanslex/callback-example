@@ -227,6 +227,7 @@
 
 <style scoped lang="stylus">
     #orders-content
+        width 100%
         margin: 0 auto
         padding-top: 20px
         @media(min-width: 961px)
@@ -239,7 +240,7 @@
         display: grid
         grid-template-columns: repeat(6, max-content)
 
-        @media(max-width: 639px)
+        @media(max-width: 646px)
             grid-template-columns 1fr
             grid-gap 5px
 
@@ -292,7 +293,7 @@
         font-size: 13px
         font-weight: 400
     .th
-        text-align: center
+        text-align left
     .tr
         display: grid
         grid-template-columns: 150px minmax(150px, 1fr) 200px 90px
