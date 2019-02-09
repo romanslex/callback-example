@@ -237,6 +237,10 @@
         display: grid
         grid-template-columns: repeat(6, max-content)
 
+        @media(max-width: 639px)
+            grid-template-columns 1fr
+            grid-gap 5px
+
     .fb-btn
         border: none
         padding: 10px 14px
@@ -255,7 +259,8 @@
             border-radius: 0 !important
             height: 36px !important
             border: solid 1px #a9a9a9
-            margin-left: 5px
+            @media(min-width: 640px)
+                margin-left: 5px
 
         >>> .mx-datepicker
             width: 100% !important
