@@ -45,9 +45,13 @@
 
 <style scoped lang="stylus">
     #feedback-content
+        width 100%
         padding-top: 20px
-        width: 940px
         margin: 0 auto
+        @media(min-width: 961px)
+            width 940px
+        @media(max-width: 960px)
+            padding 20px 10px 0 10px
     h4
         margin-top: 10px
         font-size: 15px
