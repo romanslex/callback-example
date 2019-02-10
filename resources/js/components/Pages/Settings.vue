@@ -126,13 +126,20 @@
 
 <style scoped lang="stylus">
     #settings-content
+        width 100%
         padding-top: 20px
-        width: 940px
         margin: 0 auto
+        @media(min-width: 961px)
+            width 940px
+        @media(max-width: 960px)
+            padding 20px 10px 0 10px
     #settings
         display: grid
         grid-template-columns: max-content max-content
         grid-gap: 80px
+        @media(max-width: 585px)
+            grid-gap 20px
+            grid-template-columns 1fr
     h4
         margin-top: 10px
         font-size: 15px
