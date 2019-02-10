@@ -1,13 +1,13 @@
 <template lang="pug">
     #menu-mobile
         #menu-mobile-btn(@click="isOpen = !isOpen"): i.fal.fa-bars
-        ul.mmb-list(:class="{'open': isOpen}")
+        ul.mmb-list(:class="{'open': isOpen}" @click="menuClicked")
             router-link.item(tag="li" to="/home/orders" exact-active-class="active"): a Заявки
             router-link.item(tag="li" to="/home/widgets" exact-active-class="active"): a Виджеты
             router-link.item(tag="li" to="/home/faq" exact-active-class="active"): a F.A.Q.
             router-link.item(tag="li" to="/home/antispam" exact-active-class="active"): a Антиспам
             router-link.item(tag="li" to="/home/feedback" exact-active-class="active"): a Написать мне
-
+            li.item(@click="logout"): a Выйти
 </template>
 
 <script>
@@ -15,6 +15,18 @@
         data: function(){
             return {
                 isOpen: false
+            }
+        },
+        methods: {
+            menuClicked(e){
+                if(e.target.tagName.match("A"))
+                    this.isOpen = false
+            },
+            logout(){
+                window.axios
+                    .post("/logout")
+                    .then(response => location.reload())
+                    .catch(error => console.log(error))
             }
         }
     }
