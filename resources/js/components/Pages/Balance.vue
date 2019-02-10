@@ -149,18 +149,16 @@
 </script>
 
 <style scoped lang="stylus">
-    #balance-content
-        padding-top: 20px
-
     #payment-block
         display: grid
         grid-template-columns: max-content max-content
         grid-gap: 5px
+        @media(max-width: 400px)
+            grid-template-columns 1fr
 
     .btn
         font-size: 12px
         padding: 8px 15px
-        width: max-content
         border: none
         color: white
         background: #3497dc
@@ -184,6 +182,9 @@
         margin-top: 10px
         display: grid
         grid-template-columns: repeat(6, max-content)
+        @media(max-width: 646px)
+            grid-template-columns 1fr
+            grid-gap 5px
     .fb-btn
         border: none
         padding: 10px 14px
@@ -199,6 +200,8 @@
 
     #table
         margin-top: 20px
+        overflow-x auto
+        overflow-y hidden
 
     .tr-header
         border-bottom: solid 1px #f2f3f3
@@ -207,7 +210,7 @@
 
     .tr
         display: grid
-        grid-template-columns: 150px 1fr 200px 90px
+        grid-template-columns: 150px minmax(300px, 1fr) 200px 90px
         padding: 5px 0
 
     .td
@@ -223,15 +226,22 @@
     #loader
         width: 50px
 
+    @media(max-width: 646px)
+        >>> .mx-calendar
+            float: none
+        >>> .mx-range-wrapper
+            width: initial
+
     #payments-content
-        width: 940px
+        width 100%
         margin: 0 auto
         padding-top: 20px
         >>>.mx-input
             border-radius: 0 !important
             height: 36px !important
             border: solid 1px #a9a9a9
-            margin-left: 5px
+            @media(min-width: 640px)
+                margin-left: 5px
         >>>.mx-datepicker
             width: 100% !important
         >>>.mx-calendar-table .today
@@ -241,6 +251,11 @@
         >>>.mx-calendar-table td.current,
         >>>.mx-calendar-year>a.current
             background: #115d8e !important
+        @media(min-width: 961px)
+            width 940px
+        @media(max-width: 960px)
+            padding 20px 10px 0 10px
+
     input:focus
         border: solid 1px #3497dc
 </style>
