@@ -4,7 +4,7 @@
         .qa-block
             .q-block(@click="toggleAnswerVision('one')")
                 p Как создать и установить виджет на сайт?
-            .a-block(:class="{'closed': !openStatuses.one}" style="height:101px")
+            .a-block(:class="{'closed': !openStatuses.one}" style="height: 101px")
                 ol(style="padding-left:20px")
                     li Перейдите на вкладку "Виджеты"
                     li Введите url адрес сайта и нажмите "Добавить сайт"
@@ -33,7 +33,7 @@
         .qa-block
             .q-block(@click="toggleAnswerVision('four')")
                 p Надо ли обновлять код на сайте, если я изменю настройки виджета?
-            .a-block(:class="{'closed': !openStatuses.four}" style="height: 29")
+            .a-block(:class="{'closed': !openStatuses.four}")
                 p Нет, новые настройки будут применены автоматически
 
 </template>
@@ -58,17 +58,20 @@
         methods: {
             toggleAnswerVision: function(i){
                 this.openStatuses[i] = !this.openStatuses[i];
-                console.log(this.openStatuses);
             }
-        }
+        },
     }
 </script>
 
 <style scoped lang="stylus">
     #faq-content
+        width 100%
         padding-top: 20px
-        width: 940px
         margin: 0 auto
+        @media(min-width: 961px)
+            width 940px
+        @media(max-width: 960px)
+            padding 20px 10px 0 10px
 
     .qa-block
         margin-bottom: 10px
@@ -91,4 +94,7 @@
         &.closed
             height: 0 !important
             padding-bottom: 0
+
+        @media(max-width: 646px)
+            height max-content !important
 </style>
