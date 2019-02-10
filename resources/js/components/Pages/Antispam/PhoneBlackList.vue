@@ -78,6 +78,7 @@
         outline: none
         font-size: 16px
         width: 100%
+        max-width: 385px
         border: solid 1px #a9a9a9
         &:focus
             border: solid 1px #3497dc
@@ -99,6 +100,7 @@
         padding: 5px
         height:200px
         width: 100%
+        max-width: 385px
         border: 1px solid #a9a9a9
         overflow-y: auto
         overflow-x: hidden

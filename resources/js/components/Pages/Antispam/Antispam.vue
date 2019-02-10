@@ -35,9 +35,13 @@
 
 <style scoped lang="stylus">
     #antispam-content
+        width 100%
         padding-top: 20px
-        width: 940px
         margin: 0 auto
+        @media(min-width: 961px)
+            width 940px
+        @media(max-width: 960px)
+            padding 20px 10px 0 10px
         h5
             font-weight: 300
 
@@ -46,4 +50,12 @@
         display: grid
         grid-template-columns: max-content 1fr
         grid-gap: 70px
+        line-height 1.5
+        @media(max-width: 696px)
+            font-size 14px
+            grid-template-columns 1fr 1fr
+            grid-gap 20px
+        @media(max-width: 646px)
+            grid-template-columns 1fr
+            grid-gap 5px
 </style>
