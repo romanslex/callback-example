@@ -193,7 +193,7 @@ class Widget extends Model
                       select cast(now() - interval 10 day as date)  date union all select cast(now() - interval 11 day as date)  date union all
                       select cast(now() - interval 12 day as date)  date union all select cast(now() - interval 13 day as date)  date union all
                       select cast(now() - interval 14 day as date)  date union all select cast(now() - interval 15 day as date)  date
-                ) x join orders o on x.date = cast(o.created_at as date) and o.widget_id = ?
+                ) x left join orders o on x.date = cast(o.created_at as date) and o.widget_id = ?
                 group by x.date
                 order by x.date desc", [$this->id]);
         return collect($lastOrders)->pluck("amount")->toArray();

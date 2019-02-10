@@ -58,6 +58,8 @@
         display: grid
         grid-template-columns: 300px max-content
         grid-gap: 5px
+        @media(max-width: 646px)
+            grid-template-columns 300px
 
     .cw-input
         font-size: 14px
@@ -76,10 +78,13 @@
         grid-gap: 5px
         border: none
         background: transparent
+        margin-left 5px
+        @media(max-width: 646px)
+            margin-left 0
     .cw-form-ico
         color: #3497dc
         font-size: 25px
-        margin-left: 5px
+        /*margin-left: 5px*/
         align-self: center
     .cw-form-text
         align-self: center

@@ -3,7 +3,7 @@
         #loader-block(v-show="isLoaderDisplayed")
             img#loader(src="../../../assets/loader.gif")
         #wt(v-show="!isLoaderDisplayed")
-            .wt-tr
+            .wt-tr.wt-tr-headers
                 .wt-td-url Сайт
                 .wt-td-orders Заявки
                 .wt-td-expired Окончание тарифа
@@ -86,22 +86,30 @@
 
 <style scoped lang="stylus">
     #widgets-content
-        width: 940px
+        width 100%
         margin: 0 auto
         padding-top: 20px
+        @media(min-width: 961px)
+            width 940px
+        @media(max-width: 960px)
+            padding 20px 10px 0 10px
         >>>.btn
             text-transform: uppercase
             outline: none
 
     #wt
         margin-top: 10px
+        overflow-x auto
+        overflow-y hidden
     .wt-tr
         font-size: 14px
         display: grid
-        grid-template-columns: auto 130px 180px 218px
+        grid-template-columns: minmax(340px, auto) 130px 180px max-content
         grid-template-areas: "name orders expired actions"
         padding: 10px 0
         border-bottom: 1px solid rgba(0,0,0,0.12)
+    .wt-tr-headers
+        grid-template-columns: minmax(340px, auto) 130px 180px 218px
     .wt-td-url
         grid-area: name
         align-self: center
