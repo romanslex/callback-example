@@ -145,7 +145,6 @@
 
                 this.toggleActiveBtn(val);
                 let date = this.getDate(val);
-                console.log(date);
 
                 this.isLoaderDisplayed = true;
                 this.orders = [];
