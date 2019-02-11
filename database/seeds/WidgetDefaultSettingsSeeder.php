@@ -44,9 +44,9 @@ class WidgetDefaultSettingsSeeder extends Seeder
                         "header" => "Спасибо за заявку, ожидайте звонка!",
                     ],
                     "notWorkingHours" => [
-                        "header" => "Я вас категарически приветствую",
+                        "header" => "Я вас категорически приветствую",
                         "text" => "Сейчас мы уже не работаем, но можем перезвонить вам завтра",
-                        "btnText" => "Ага!"
+                        "btnText" => "Жду звонка!"
                     ]
                 ]
             ]
