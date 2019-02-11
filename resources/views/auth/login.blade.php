@@ -100,7 +100,7 @@
         <ul>
             <li>Laravel 5.7</li>
             <li>Vue.js 2</li>
-            <li>PostgreSQL</li>
+            <li>MySQL</li>
             <li>pug, stylus</li>
         </ul>
     </div>
