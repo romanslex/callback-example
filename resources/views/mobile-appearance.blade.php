@@ -19,5 +19,7 @@
      data-currentWindow="{{$currentWindow}}"
      data-currentBtn="{{$currentBtn}}"></div>
 <script src="/js/mobile-appearance.js"></script>
+@include('counters.ganalytics')
+@include('counters.ymetrika')
 </body>
 </html>

@@ -22,5 +22,7 @@
 </div>
 
 <script src="/js/window-appearance.js"></script>
+@include('counters.ganalytics')
+@include('counters.ymetrika')
 </body>
 </html>

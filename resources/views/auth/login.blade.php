@@ -126,5 +126,7 @@
         </form>
     </div>
 </div>
+@include('counters.ganalytics')
+@include('counters.ymetrika')
 </body>
 </html>
