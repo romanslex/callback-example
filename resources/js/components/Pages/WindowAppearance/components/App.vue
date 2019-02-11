@@ -15,7 +15,8 @@
         #site
             window1(v-show="currentWindow === 'w1'")
             window2(v-show="currentWindow === 'w2'")
-            iframe(scrolling=no :src="site" frameborder="0" style="width:100%;height:100%;background:#fff" width='100%' id='frame')
+            #frame
+                h1 <span>Site</span>Screenshot
 </template>
 
 <script>
@@ -121,4 +122,17 @@
         outline: none
         &:hover
             box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.38)
+    #frame
+        width 100%
+        background #e2e2e2
+        height 100%
+        display grid
+        h1
+            font-weight 500
+            justify-self center
+            align-self center
+            color #9e9e9e
+            font-size 90px
+            span
+                font-weight 300
 </style>
