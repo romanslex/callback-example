@@ -1,13 +1,14 @@
 <template lang="pug">
     #content
         #settings
-            h3(style='margin-top: 10px') НАстройки
+            h3(style='margin-top: 10px') Настройки
             settings1(v-show="currentBtn === 'b1'")
             .btn-wrap
                 button.btn(@click='save') Сохранить
         #site
             btn1(v-show="currentBtn === 'b1'")
-            iframe#frame(scrolling='no', :src='site', frameborder='0', style='width:100%;height:100%;background:#fff', width='100%')
+            div#frame
+                h1 <span>Site</span>Screenshot
 </template>
 
 <script>
@@ -109,4 +110,17 @@
         outline none
         &:hover
             box-shadow 0 3px 8px 0 rgba(0, 0, 0, 0.38)
+    #frame
+        width 100%
+        background #e2e2e2
+        height 100%
+        display grid
+        h1
+            font-weight 500
+            justify-self center
+            align-self center
+            color #9e9e9e
+            font-size 90px
+            span
+                font-weight 300
 </style>
